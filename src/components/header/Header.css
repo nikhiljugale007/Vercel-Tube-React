@@ -1,0 +1,32 @@
+.nav {
+	height: 6rem;
+	position: fixed;
+	z-index: 5;
+}
+.nav-sub-container {
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+	gap: 2rem;
+}
+.youtube-icon {
+	color: red;
+}
+.search-bar {
+	background-color: var(--hover-color);
+}
+.search-bar input {
+	line-height: 3.5rem;
+}
+.search-bar .btn-icon {
+	padding: 0 1rem;
+}
+.btn-icon {
+	/* background-color: var(--hover-color); */
+	color: #000;
+}
+@media (max-width: 768px) {
+	.hide {
+		display: none;
+	}
+}
