@@ -13,14 +13,14 @@ const Sidebar = () => {
 	const location = useLocation().pathname;
 	return (
 		<div className="sidebar-container">
-			<Link
+			<NavLink
 				to="/"
 				className={`sidebar-item link-no-style + ${
 					location === "/" ? "active" : ""
 				}`}
 			>
 				<FaHome size={20} /> <p>Home</p>
-			</Link>
+			</NavLink>
 			<NavLink
 				to="/videos"
 				className={`sidebar-item link-no-style + ${
@@ -29,38 +29,38 @@ const Sidebar = () => {
 			>
 				<FaCompass size={20} /> <p>Explore</p>
 			</NavLink>
-			<Link
+			<NavLink
 				to="/playlist"
 				className={`sidebar-item link-no-style + ${
 					location === "/playlist" ? "active" : ""
 				}`}
 			>
 				<FaThList size={20} /> <p>Playlist</p>
-			</Link>
-			<Link
+			</NavLink>
+			<NavLink
 				to="/liked-videos"
 				className={`sidebar-item link-no-style + ${
 					location === "/liked-videos" ? "active" : ""
 				}`}
 			>
 				<FaThumbsUp size={20} /> <p>Liked Videos</p>
-			</Link>
-			<Link
+			</NavLink>
+			<NavLink
 				to="/watch-later"
 				className={`sidebar-item link-no-style + ${
 					location === "/watch-later" ? "active" : ""
 				}`}
 			>
 				<FaClock size={20} /> <p>Watch Later</p>
-			</Link>
-			<Link
+			</NavLink>
+			<NavLink
 				to="/history"
 				className={`sidebar-item link-no-style + ${
 					location === "/history" ? "active" : ""
 				}`}
 			>
 				<FaHistory size={20} /> <p>History</p>
-			</Link>
+			</NavLink>
 		</div>
 	);
 };
