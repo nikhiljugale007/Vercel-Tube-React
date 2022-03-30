@@ -7,7 +7,7 @@ import {
 	FaThList,
 	FaThumbsUp,
 } from "../../icons";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
 	const location = useLocation().pathname;
