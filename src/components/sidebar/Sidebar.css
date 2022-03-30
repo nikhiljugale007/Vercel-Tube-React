@@ -1,0 +1,16 @@
+.sidebar-container {
+	background-color: var(--hover-color);
+	height: 100%;
+}
+.sidebar-item {
+	display: flex;
+	align-self: flex-start;
+	padding: 3rem;
+	gap: 1rem;
+	align-items: center;
+}
+.active {
+	color: var(--primary-color);
+	background-color: white;
+	text-decoration: none;
+}
