@@ -13,7 +13,14 @@ import {
 	FaHistory,
 	FaClock,
 	FaYoutube,
+	FaEllipsisV,
+	FaShareSquare,
+	FaWindowClose,
 } from "react-icons/fa";
+
+import { MdFeaturedPlayList } from "react-icons/md";
+
+import { AiFillCloseCircle } from "react-icons/ai";
 
 export {
 	FaBeer,
@@ -30,4 +37,9 @@ export {
 	FaHistory,
 	FaClock,
 	FaYoutube,
+	FaEllipsisV,
+	MdFeaturedPlayList,
+	FaShareSquare,
+	FaWindowClose,
+	AiFillCloseCircle,
 };

@@ -1,4 +1,5 @@
 @import url("https://vercelui.netlify.app/component-lib/all-comp.css");
+@import url("./utility.css");
 
 * {
 	margin: 0;

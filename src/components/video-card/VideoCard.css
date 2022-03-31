@@ -1,0 +1,59 @@
+.card {
+	position: relative;
+}
+.card:hover {
+	box-shadow: 1px 8px 20px grey;
+	transition: box-shadow 0.1s ease-in;
+	cursor: pointer;
+}
+
+.avatar {
+	border-color: red;
+}
+.channel-logo {
+	border-radius: 50%;
+	width: 5rem;
+	height: 5rem;
+	aspect-ratio: 1 / 1;
+}
+.card-body-sub-container {
+	display: flex;
+	gap: 1rem;
+}
+.text-gray {
+	color: gray;
+}
+.option-icon {
+	align-self: flex-start;
+	position: relative;
+	top: 9px;
+	padding: 0;
+}
+.dropdown-container {
+	position: relative;
+	align-self: flex-start;
+	top: 0;
+}
+.dropdown-menu {
+	position: absolute;
+	background-color: #fff;
+	top: 1rem;
+	right: 3rem;
+	z-index: 5;
+	width: 15rem;
+	padding: 0;
+}
+.list {
+	padding: 10px;
+	border-radius: 0;
+}
+.list-item {
+	display: flex;
+	gap: 10px;
+	padding: 5px;
+	align-items: center;
+}
+.list-item:hover {
+	background-color: var(--hover-color);
+	cursor: pointer;
+}

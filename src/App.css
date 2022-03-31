@@ -8,9 +8,12 @@
 .aside {
 	height: 100%;
 	border-right: 2px solid gray;
+	position: sticky;
 }
 .main-section {
 	height: 100%;
+	padding: 1rem;
+	overflow: scroll;
 }
 @media (max-width: 768px) {
 	.aside {
