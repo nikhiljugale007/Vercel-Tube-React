@@ -1,5 +1,6 @@
 .card {
 	position: relative;
+	min-width: 300px;
 }
 .card:hover {
 	box-shadow: 1px 8px 20px grey;

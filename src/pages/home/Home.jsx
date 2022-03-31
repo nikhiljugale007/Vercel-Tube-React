@@ -11,23 +11,26 @@ const Home = () => {
 			</div>
 			<div>
 				<p className="typo-title pv-2">Trending Videos</p>
-				<grid className="grid  grid-4-responsive">
+				<div className="horizontal-video-list">
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
-				</grid>
+					<VideoCard />
+					<VideoCard />
+					<VideoCard />
+				</div>
 			</div>
 			<div>
 				<p className="typo-title pv-2">Suggestion For you</p>
-				<grid className="grid  grid-4-responsive">
+				<div className="horizontal-video-list">
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
-				</grid>
+				</div>
 			</div>
 		</div>
 	);

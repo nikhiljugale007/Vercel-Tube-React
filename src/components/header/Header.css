@@ -10,7 +10,7 @@
 	gap: 2rem;
 }
 .youtube-icon {
-	color: red;
+	color: var(--primary-color);
 }
 .search-bar {
 	background-color: var(--hover-color);
