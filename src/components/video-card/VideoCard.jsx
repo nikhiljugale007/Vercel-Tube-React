@@ -24,39 +24,40 @@ const VideoCard = () => {
 						loading="lazy"
 						src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 					/>
-					<div className="flex-hz-space-bw">
+					<div className="flex-vt">
 						<p className="h6"> SEN Senitara hi leaks his Team</p>
-
-						<div className="dropdown-container">
-							{showDropDown && (
-								<div className="dropdown-menu">
-									<ul className="list list-style-nostyle">
-										<li className="list-item">
-											<MdFeaturedPlayList />
-											Add to playlist
-										</li>
-										<li className="list-item">
-											<FaClock />
-											Add to watch later
-										</li>
-										<li className="list-item">
-											<FaShareSquare /> Share
-										</li>
-									</ul>
-								</div>
-							)}
-							<div
-								className="btn btn-icon"
-								onClick={() => setShowDropDown((prev) => !prev)}
-							>
-								{showDropDown ? <AiFillCloseCircle /> : <FaEllipsisV />}
-							</div>
+						<p className="text-small text-gray">WaveForm Clips</p>
+						<div className="card-sub-container text-gray">
+							<p className="text-small">6k Views</p>
+							<p>.</p>
+							<p className="text-small ">5Months ago</p>
 						</div>
 					</div>
-				</div>
-				<div className="card-body-sub-container text-gray">
-					<p className="card-subheading">6k Views</p>
-					<p className="card-subheading ">5 Months ago</p>
+					<div className="dropdown-container">
+						{showDropDown && (
+							<div className="dropdown-menu">
+								<ul className="list list-style-nostyle">
+									<li className="list-item">
+										<MdFeaturedPlayList />
+										Add to playlist
+									</li>
+									<li className="list-item">
+										<FaClock />
+										Add to watch later
+									</li>
+									<li className="list-item">
+										<FaShareSquare /> Share
+									</li>
+								</ul>
+							</div>
+						)}
+						<div
+							className=" btn-icon"
+							onClick={() => setShowDropDown((prev) => !prev)}
+						>
+							{showDropDown ? <AiFillCloseCircle /> : <FaEllipsisV />}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

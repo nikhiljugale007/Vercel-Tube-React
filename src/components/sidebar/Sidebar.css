@@ -1,16 +1,24 @@
 .sidebar-container {
 	background-color: var(--hover-color);
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
 }
 .sidebar-item {
+	width: 90%;
 	display: flex;
 	align-self: flex-start;
-	padding: 3rem;
 	gap: 1rem;
+	padding: 1rem;
+	margin: 1rem;
 	align-items: center;
+	border-radius: 5px;
 }
 .active {
 	color: var(--primary-color);
 	background-color: white;
 	text-decoration: none;
+	border: 1px solid var(--primary-color);
 }
