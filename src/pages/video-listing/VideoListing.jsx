@@ -1,6 +1,6 @@
 import { Tab, VideoCard } from "../../components";
 import "./VideoListing.css";
-import { TabData } from "./TabData";
+import { TabData, videos } from "./TabData";
 const VideoListing = () => {
 	return (
 		<div>
@@ -10,12 +10,9 @@ const VideoListing = () => {
 				))}
 			</div>
 			<grid className="grid  grid-4-responsive">
-				<VideoCard />
-				<VideoCard />
-				<VideoCard />
-				<VideoCard />
-				<VideoCard />
-				<VideoCard />
+				{videos.map((video) => {
+					return <VideoCard key={video._id} video={video} />;
+				})}
 			</grid>
 		</div>
 	);

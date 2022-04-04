@@ -7,13 +7,14 @@ import {
 	FaShareSquare,
 	AiFillCloseCircle,
 } from "../../icons";
-const VideoCard = () => {
+const VideoCard = ({ video }) => {
 	const [showDropDown, setShowDropDown] = useState(false);
+	const { title, authorImageUrl, thumbnailImageUrl, channelName } = video;
 	return (
 		<div className="card">
 			<img
 				className="card-img-container"
-				src="https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg"
+				src={thumbnailImageUrl}
 				alt="thumbnail"
 			/>
 			<div className="card-body">
@@ -22,11 +23,11 @@ const VideoCard = () => {
 						className="channel-logo"
 						alt="avatar"
 						loading="lazy"
-						src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+						src={authorImageUrl}
 					/>
 					<div className="flex-vt">
-						<p className="h6"> SEN Senitara hi leaks his Team</p>
-						<p className="text-small text-gray">WaveForm Clips</p>
+						<p className="h6">{title}</p>
+						<p className="text-small text-gray">{channelName}</p>
 						<div className="card-sub-container text-gray">
 							<p className="text-small">6k Views</p>
 							<p>.</p>
