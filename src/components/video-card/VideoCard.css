@@ -24,7 +24,7 @@
 	gap: 1rem;
 }
 .text-gray {
-	color: gray;
+	color: var(--color-gray);
 }
 .option-icon {
 	background-color: var(--hover-color);

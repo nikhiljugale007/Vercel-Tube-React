@@ -10,6 +10,9 @@ import {
 const VideoCard = ({ video }) => {
 	const [showDropDown, setShowDropDown] = useState(false);
 	const { title, authorImageUrl, thumbnailImageUrl, channelName } = video;
+	const toggleOptionMenu = () => {
+		setShowDropDown((prev) => !prev);
+	};
 	return (
 		<div className="card">
 			<img
@@ -54,10 +57,7 @@ const VideoCard = ({ video }) => {
 								</ul>
 							</div>
 						)}
-						<div
-							className="option-icon"
-							onClick={() => setShowDropDown((prev) => !prev)}
-						>
+						<div className="option-icon" onClick={toggleOptionMenu}>
 							{showDropDown ? <AiFillCloseCircle /> : <FaEllipsisV />}
 						</div>
 					</div>

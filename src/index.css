@@ -1,6 +1,9 @@
 @import url("https://vercelui.netlify.app/component-lib/all-comp.css");
 @import url("./utility.css");
 
+:root {
+	--color-gray: gray;
+}
 * {
 	margin: 0;
 	padding: 0;
