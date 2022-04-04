@@ -13,8 +13,8 @@ const Header = () => {
 		<nav className="nav">
 			<div className="nav-sub-container">
 				<FaBars className="" size={20} />
-				<p className="flex-hz">
-					<FaYoutube size={30} className="youtube-icon" />
+				<p className="flex-hz youtube-icon">
+					<FaYoutube size={30} />
 					VercelTube
 				</p>
 			</div>

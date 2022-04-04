@@ -29,6 +29,9 @@
 .pv-1 {
 	padding: 1rem 0;
 }
+.pv-2 {
+	padding: 2rem 0;
+}
 .p-2 {
 	padding: 2rem;
 }
@@ -49,6 +52,9 @@
 }
 .full-width {
 	width: 100%;
+}
+.width-fit-content {
+	width: fit-content;
 }
 .active-tag {
 	color: var(--primary-color);

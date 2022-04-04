@@ -1,0 +1,15 @@
+.tab {
+	background-color: var(--hover-color);
+	padding: 1rem 2rem;
+	border-radius: 5rem;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tab:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	background-color: var(--primary-color);
+	color: var(--complimentary-font-color);
+}

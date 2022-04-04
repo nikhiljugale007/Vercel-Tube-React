@@ -1,0 +1,70 @@
+.card {
+	position: relative;
+	min-width: 30rem;
+}
+.card:hover {
+	box-shadow: 1px 8px 20px grey;
+	transition: box-shadow 0.1s ease-in;
+	cursor: pointer;
+}
+
+.avatar {
+	border-color: red;
+}
+.channel-logo {
+	border-radius: 50%;
+	width: 5rem;
+	height: 5rem;
+	aspect-ratio: 1 / 1;
+}
+.card-body-sub-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+.text-gray {
+	color: var(--color-gray);
+}
+.option-icon {
+	background-color: var(--hover-color);
+	border-radius: 50%;
+	padding: 2px 5px;
+}
+.dropdown-container {
+	align-self: flex-start;
+	top: 0;
+}
+.dropdown-menu {
+	position: absolute;
+	background-color: var(--primary-bg-color);
+	bottom: -4rem;
+	right: 4rem;
+	z-index: 5;
+	width: 15rem;
+	padding: 0;
+}
+
+.list {
+	padding: 10px;
+	border-radius: 0;
+}
+.list-item {
+	display: flex;
+	gap: 10px;
+	padding: 5px;
+	align-items: center;
+}
+.list-item:hover {
+	background-color: var(--hover-color);
+	cursor: pointer;
+}
+
+.text-small {
+	font-size: 1.2rem;
+}
+.card-sub-container {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}

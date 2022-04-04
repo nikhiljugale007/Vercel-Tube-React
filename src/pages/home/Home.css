@@ -1,0 +1,27 @@
+.grid {
+	justify-items: center;
+}
+.ad-container {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 40rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2rem;
+	margin: 1rem 0;
+	border-radius: 10px;
+}
+.ad-container img {
+	object-fit: cover;
+}
+.ad-container p {
+	background-color: transparent;
+	color: var(--complimentary-font-color);
+}
+.horizontal-video-list {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem 0;
+}

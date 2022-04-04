@@ -1,0 +1,12 @@
+.tab-container {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
+	overflow-x: scroll;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+.video-grid {
+	background-color: rebeccapurple;
+}
