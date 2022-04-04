@@ -17,7 +17,8 @@
 	object-fit: cover;
 }
 .ad-container p {
-	background-color: var(--primary-bg-color);
+	background-color: transparent;
+	color: var(--complimentary-font-color);
 }
 .horizontal-video-list {
 	display: flex;

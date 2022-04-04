@@ -2,17 +2,19 @@ import { VideoCard } from "../../components";
 import "./Home.css";
 import { videos } from "../video-listing/TabData";
 const Home = () => {
+	const bg_image =
+		"https://s01.sgp1.cdn.digitaloceanspaces.com/article/156848-arkadmhmgb-1616914190.jpg";
 	return (
 		<div>
 			<div
 				className="ad-container"
 				style={{
-					backgroundImage: `url("https://images.indianexpress.com/2020/12/India-vs-Australia.jpg")`,
+					backgroundImage: `url(${bg_image})`,
 				}}
 			>
-				<p>RIOT GAMES</p>
-				<p className="h1 text-bold text-white">VALORENT Masters:</p>
-				<p className="typo-label pv-1">Watch live matches from Berlin</p>
+				<p>3rd ODI </p>
+				<p className="h1 text-bold text-white">India vs England</p>
+				<p className="typo-label pv-1">Watch live from Wankhede, Mumbai</p>
 				<button className="btn btn-primary width-fit-content">Watch now</button>
 			</div>
 			<div>
