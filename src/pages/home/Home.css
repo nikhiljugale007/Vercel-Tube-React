@@ -17,11 +17,10 @@
 	object-fit: cover;
 }
 .ad-container p {
-	color: #fff;
+	background-color: var(--primary-bg-color);
 }
 .horizontal-video-list {
 	display: flex;
 	gap: 1rem;
 	padding: 1rem 0;
-	overflow-x: auto;
 }

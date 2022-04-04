@@ -12,6 +12,9 @@
 .youtube-icon {
 	color: var(--primary-color);
 }
+.youtube-icon:hover {
+	cursor: pointer;
+}
 .search-bar {
 	background-color: var(--hover-color);
 }

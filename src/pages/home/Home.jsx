@@ -17,19 +17,19 @@ const Home = () => {
 			</div>
 			<div>
 				<p className="typo-title pv-2">Trending Videos</p>
-				<div className="horizontal-video-list">
+				<grid className="grid  grid-4-responsive">
 					{videos.map((video) => {
 						return <VideoCard key={video._id} video={video} />;
 					})}
-				</div>
+				</grid>
 			</div>
 			<div>
 				<p className="typo-title pv-2">Suggestion For you</p>
-				<div className="horizontal-video-list">
+				<grid className="grid  grid-4-responsive">
 					{videos.map((video) => {
 						return <VideoCard key={video._id} video={video} />;
 					})}
-				</div>
+				</grid>
 			</div>
 		</div>
 	);

@@ -19,19 +19,21 @@ const VideoCard = ({ video }) => {
 			/>
 			<div className="card-body">
 				<div className="card-body-sub-container">
-					<img
-						className="channel-logo"
-						alt="avatar"
-						loading="lazy"
-						src={authorImageUrl}
-					/>
-					<div className="flex-vt">
-						<p className="h6">{title}</p>
-						<p className="text-small text-gray">{channelName}</p>
-						<div className="card-sub-container text-gray">
-							<p className="text-small">6k Views</p>
-							<p>.</p>
-							<p className="text-small ">5Months ago</p>
+					<div className="flex-hz">
+						<img
+							className="channel-logo"
+							alt="avatar"
+							loading="lazy"
+							src={authorImageUrl}
+						/>
+						<div className="flex-vt">
+							<p className="h6">{title}</p>
+							<p className="text-small text-gray">{channelName}</p>
+							<div className="card-sub-container text-gray">
+								<p className="text-small">6k Views</p>
+								<p>.</p>
+								<p className="text-small">5Months ago</p>
+							</div>
 						</div>
 					</div>
 					<div className="dropdown-container">
@@ -53,7 +55,7 @@ const VideoCard = ({ video }) => {
 							</div>
 						)}
 						<div
-							className=" btn-icon"
+							className="option-icon"
 							onClick={() => setShowDropDown((prev) => !prev)}
 						>
 							{showDropDown ? <AiFillCloseCircle /> : <FaEllipsisV />}

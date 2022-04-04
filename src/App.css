@@ -15,7 +15,7 @@
 	padding: 1rem;
 	overflow: scroll;
 }
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 	.aside {
 		display: none;
 	}
