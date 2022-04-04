@@ -4,6 +4,7 @@ import { videos } from "../video-listing/TabData";
 const Home = () => {
 	const bg_image =
 		"https://s01.sgp1.cdn.digitaloceanspaces.com/article/156848-arkadmhmgb-1616914190.jpg";
+
 	return (
 		<div>
 			<div
