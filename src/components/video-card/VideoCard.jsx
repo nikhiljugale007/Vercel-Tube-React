@@ -7,12 +7,67 @@ import {
 	FaShareSquare,
 	AiFillCloseCircle,
 } from "../../icons";
+import {
+	addToWatchLater,
+	addToLikedVideos,
+	removeFromWatchLater,
+	removeFromLikedVideos,
+} from "../../api/apicalls";
+import { useVideoContext } from "../../context/VideoContext";
 const VideoCard = ({ video }) => {
+	const { videoState, videoDispatch } = useVideoContext();
 	const [showDropDown, setShowDropDown] = useState(false);
-	const { title, authorImageUrl, thumbnailImageUrl, channelName } = video;
+	const { _id, title, authorImageUrl, thumbnailImageUrl, channelName } = video;
 	const toggleOptionMenu = () => {
 		setShowDropDown((prev) => !prev);
 	};
+
+	const addVideoToWatchLater = async () => {
+		const response = await addToWatchLater(video);
+		if (response.success) {
+			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
+			setShowDropDown((prev) => !prev);
+		} else {
+			console.log("error");
+		}
+	};
+	const removeVideoFromWatchLater = async () => {
+		const response = await removeFromWatchLater(_id);
+		if (response.success) {
+			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
+			setShowDropDown((prev) => !prev);
+		} else {
+			console.log("ERROR");
+		}
+	};
+
+	const addVideoToLikedVideo = async () => {
+		const response = await addToLikedVideos(video);
+		if (response.success) {
+			console.log(response);
+			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
+			setShowDropDown((prev) => !prev);
+		} else {
+			console.log("error");
+		}
+	};
+	const removeVideoFromLikedVideos = async () => {
+		const response = await removeFromLikedVideos(_id);
+		if (response.success) {
+			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
+			setShowDropDown((prev) => !prev);
+		} else {
+			console.log("ERROR");
+		}
+	};
+	const checkVideoInWatchLater = () => {
+		return videoState.watchlater.find((item) => item._id === _id);
+	};
+
+	const checkVideoInLikedVideo = () => {
+		return videoState.likedvideos.find((item) => item._id === _id);
+	};
+
 	return (
 		<div className="card">
 			<img
@@ -30,7 +85,7 @@ const VideoCard = ({ video }) => {
 							src={authorImageUrl}
 						/>
 						<div className="flex-vt">
-							<p className="h6">{title}</p>
+							<p className="h6 ellipsis">{title}</p>
 							<p className="text-small text-gray">{channelName}</p>
 							<div className="card-sub-container text-gray">
 								<p className="text-small">6k Views</p>
@@ -47,13 +102,38 @@ const VideoCard = ({ video }) => {
 										<MdFeaturedPlayList />
 										Add to playlist
 									</li>
-									<li className="list-item">
-										<FaClock />
-										Add to watch later
-									</li>
-									<li className="list-item">
-										<FaShareSquare /> Share
-									</li>
+									{checkVideoInWatchLater() ? (
+										<li
+											className="list-item"
+											onClick={() => removeVideoFromWatchLater()}
+										>
+											<FaClock />
+											Remove From watch later
+										</li>
+									) : (
+										<li
+											className="list-item"
+											onClick={() => addVideoToWatchLater()}
+										>
+											<FaClock />
+											Add to watch later
+										</li>
+									)}
+									{checkVideoInLikedVideo() ? (
+										<li
+											className="list-item"
+											onClick={() => removeVideoFromLikedVideos()}
+										>
+											<FaShareSquare /> Remove from liked Videos
+										</li>
+									) : (
+										<li
+											className="list-item"
+											onClick={() => addVideoToLikedVideo()}
+										>
+											<FaShareSquare /> Add to liked Videos
+										</li>
+									)}
 								</ul>
 							</div>
 						)}

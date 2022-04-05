@@ -1,6 +1,15 @@
+.ellipsis {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
 .card {
 	position: relative;
-	min-width: 30rem;
+}
+.card-img-container {
+	height: 300px;
+	object-fit: fill;
 }
 .card:hover {
 	box-shadow: 1px 8px 20px grey;
