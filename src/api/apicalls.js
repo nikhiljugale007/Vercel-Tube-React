@@ -29,6 +29,7 @@ const getAllVideos = async () => {
 	}
 };
 const getVideoById = async (id) => {
+	console.log(id);
 	try {
 		const response = await axios.get(`/api/video/${id}`);
 		return { video: response.data.video, success: true };
