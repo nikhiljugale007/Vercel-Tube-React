@@ -25,10 +25,18 @@ const getAllVideos = async () => {
 		const response = await axios.get("/api/videos");
 		return { videos: response.data.videos, success: true };
 	} catch (err) {
-		return { products: [], success: false };
+		return { videos: [], success: false };
 	}
 };
-
+const getVideoById = async (id) => {
+	try {
+		const response = await axios.get(`/api/video/${id}`);
+		return { video: response.data.video, success: true };
+	} catch (err) {
+		console.log(err);
+		return { video: [], success: false };
+	}
+};
 const addToWatchLater = async (video) => {
 	try {
 		const response = await axios.post(
@@ -151,6 +159,7 @@ const getCategories = async () => {
 };
 export {
 	getAllVideos,
+	getVideoById,
 	addToWatchLater,
 	removeFromWatchLater,
 	getWatchLater,
