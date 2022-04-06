@@ -18,16 +18,14 @@ export const PlaylistCard = ({ playlist }) => {
 		}
 	};
 	return (
-		<Link to={`/playlist/${_id}`} className="link-no-style">
-			<div className="card p-2">
-				<div className="flex-hz-space-bw">
-					<p className="typo-title">{title}</p>
-					<button className="btn btn-icon" onClick={deletePlaylist}>
-						<AiFillDelete size={20} />
-					</button>
-				</div>
-				<p className="typo-label">{videos.length} videos</p>
+		<Link to={`/playlist/${_id}`} className="link-no-style card p-2">
+			<div className="flex-hz-space-bw">
+				<p className="typo-title">{title}</p>
+				<button className="btn btn-icon" onClick={deletePlaylist}>
+					<AiFillDelete size={20} />
+				</button>
 			</div>
+			<p className="typo-label">{videos.length} videos</p>
 		</Link>
 	);
 };

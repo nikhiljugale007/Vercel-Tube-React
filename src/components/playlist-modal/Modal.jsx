@@ -2,13 +2,17 @@ import { useVideoContext } from "../../context/VideoContext";
 import "./Modal.css";
 import { FaWindowClose } from "../../icons";
 import { useState } from "react";
-import { addPlaylist, addToSpecificPlaylist } from "../../api/apicalls";
+import {
+	addPlaylist,
+	addToSpecificPlaylist,
+	deleteFromSpecificPlaylist,
+} from "../../api/apicalls";
 export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 	const { videoState, videoDispatch } = useVideoContext();
 	const [newPlaylist, setNewPlaylist] = useState(false);
 	const [playListName, setPlayListName] = useState("");
 	const closeModal = () => {
-		console.log(setShowPlaylistModal(false));
+		setShowPlaylistModal(false);
 	};
 	const handleNewPlaylist = () => {
 		setNewPlaylist(true);
@@ -33,6 +37,27 @@ export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 			console.log("ERR");
 		}
 	};
+	const removeVideoFromSpecificPlaylist = async (playlistId) => {
+		const response = await deleteFromSpecificPlaylist(
+			playlistId,
+			currentVideo._id
+		);
+		console.log(response);
+		if (response.success) {
+			videoDispatch({ type: "SET_PLAYLISTBY_ID", payload: response.playlist });
+			console.log(response.playlist);
+		} else {
+			console.log("ERR");
+		}
+	};
+	const checkVideoInPlaylist = (playlistId) => {
+		const individualPlaylist = videoState.playlists.find(
+			(item) => item._id === playlistId
+		);
+		return individualPlaylist.videos.find(
+			(item) => item._id === currentVideo._id
+		);
+	};
 	return (
 		<div className="playlist-modal">
 			<div className="flex-hz-space-bw">
@@ -44,15 +69,25 @@ export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 			<div className="playlist-container">
 				{videoState.playlists.map((item, index) => {
 					return (
-						// <label htmlFor={item.title} className="playlist-item" key={index}>
-						// 	<input type="checkbox" value={item.title} name={item.title} />
-						// </label>
-						<p
-							className="typo-label list-item"
-							onClick={() => addVideoToPlayList(item._id)}
-						>
-							{item.title}
-						</p>
+						<div key={index}>
+							{checkVideoInPlaylist(item._id) ? (
+								<label
+									className="typo-label list-item"
+									onClick={() => removeVideoFromSpecificPlaylist(item._id)}
+								>
+									<input type="checkbox" checked={true} />
+									{item.title + " "}
+								</label>
+							) : (
+								<p
+									className="typo-label list-item"
+									onClick={() => addVideoToPlayList(item._id)}
+								>
+									<input type="checkbox" checked={false} />
+									{item.title + " "}
+								</p>
+							)}
+						</div>
 					);
 				})}
 			</div>

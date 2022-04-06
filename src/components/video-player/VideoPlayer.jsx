@@ -12,9 +12,11 @@ import {
 	removeFromLikedVideos,
 } from "../../api/apicalls";
 import { useVideoContext } from "../../context/VideoContext";
-
+import { useState } from "react";
+import { Modal } from "../playlist-modal/Modal";
 const VideoPlayer = ({ video }) => {
 	const { videoState, videoDispatch } = useVideoContext();
+	const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
 	const addVideoToWatchLater = async () => {
 		const response = await addToWatchLater(video);
@@ -56,69 +58,81 @@ const VideoPlayer = ({ video }) => {
 	const checkVideoInLikedVideo = () => {
 		return videoState.likedvideos.find((item) => item._id === video._id);
 	};
-
+	const handlePlaylist = () => {
+		setShowPlaylistModal(true);
+	};
 	return (
-		<div className="video-player-container flex-vt">
-			<iframe
-				className="video-player"
-				src={video.url}
-				title="video-player"
-				frameBorder="0"
-				allowFullScreen
-			></iframe>
-			<div className="flex-vt pv-1">
-				<p className="typo-title">{video.title}</p>
-				<div className="flex-hz-space-bw pv-1">
-					<p className="typo-label option-container">
-						<div className="flex-hz g-1">
-							{checkVideoInLikedVideo() ? (
-								<li
-									className="list-item"
-									onClick={() => removeVideoFromLikedVideos()}
-								>
-									<AiFillLike size={20} className="filled-icon" />
-									<p className="hide">Remove from liked Videos</p>
-								</li>
-							) : (
-								<li
-									className="list-item"
-									onClick={() => addVideoToLikedVideo()}
-								>
-									<AiOutlineLike size={20} />
-									<p className="hide"> Add to liked Videos</p>
-								</li>
-							)}
-						</div>
+		<>
+			{showPlaylistModal && (
+				<div className="video-player-modal">
+					<Modal
+						setShowPlaylistModal={setShowPlaylistModal}
+						currentVideo={video}
+					/>
+				</div>
+			)}
+			<div className="video-player-container flex-vt">
+				<iframe
+					className="video-player"
+					src={video.url}
+					title="video-player"
+					frameBorder="0"
+					allowFullScreen
+				></iframe>
+				<div className="flex-vt pv-1">
+					<p className="typo-title">{video.title}</p>
+					<div className="flex-hz-space-bw pv-1">
+						<p className="typo-label option-container">
+							<div className="flex-hz g-1">
+								{checkVideoInLikedVideo() ? (
+									<li
+										className="list-item"
+										onClick={() => removeVideoFromLikedVideos()}
+									>
+										<AiFillLike size={20} className="filled-icon" />
+										<p className="hide">Remove from liked Videos</p>
+									</li>
+								) : (
+									<li
+										className="list-item"
+										onClick={() => addVideoToLikedVideo()}
+									>
+										<AiOutlineLike size={20} />
+										<p className="hide"> Add to liked Videos</p>
+									</li>
+								)}
+							</div>
 
-						<div className="flex-hz g-1">
-							{checkVideoInWatchLater() ? (
-								<li
-									className="list-item"
-									onClick={() => removeVideoFromWatchLater()}
-								>
-									<FaClock className="filled-icon" />
-									<p className="hide">Remove From watch later</p>
+							<div className="flex-hz g-1">
+								{checkVideoInWatchLater() ? (
+									<li
+										className="list-item"
+										onClick={() => removeVideoFromWatchLater()}
+									>
+										<FaClock className="filled-icon" />
+										<p className="hide">Remove From watch later</p>
+									</li>
+								) : (
+									<li
+										className="list-item"
+										onClick={() => addVideoToWatchLater()}
+									>
+										<FaClock />
+										<p className="hide">Add to watch later</p>
+									</li>
+								)}
+							</div>
+							<div className="flex-hz g-1">
+								<li className="list-item" onClick={handlePlaylist}>
+									<MdFeaturedPlayList />
+									<p className="hide">Add to playlist</p>
 								</li>
-							) : (
-								<li
-									className="list-item"
-									onClick={() => addVideoToWatchLater()}
-								>
-									<FaClock />
-									<p className="hide">Add to watch later</p>
-								</li>
-							)}
-						</div>
-						<div className="flex-hz g-1">
-							<li className="list-item">
-								<MdFeaturedPlayList />
-								<p className="hide">Add to playlist</p>
-							</li>
-						</div>
-					</p>
+							</div>
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 export { VideoPlayer };
