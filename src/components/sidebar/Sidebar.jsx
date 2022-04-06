@@ -7,10 +7,9 @@ import {
 	FaThList,
 	FaThumbsUp,
 } from "../../icons";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-	const location = useLocation().pathname;
 	const getActiveStyle = ({ isActive }) => ({
 		color: isActive ? "white" : "",
 	});

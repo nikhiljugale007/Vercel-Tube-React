@@ -1,6 +1,5 @@
 import "./VideoPlayer.css";
 import {
-	FaThumbsUp,
 	MdFeaturedPlayList,
 	FaClock,
 	AiFillLike,
