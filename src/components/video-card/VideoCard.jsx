@@ -18,7 +18,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
 const VideoCard = ({ video, card_type }) => {
-	console.log(card_type);
 	const { videoState, videoDispatch } = useVideoContext();
 	const [showDropDown, setShowDropDown] = useState(false);
 	const navigate = useNavigate();
