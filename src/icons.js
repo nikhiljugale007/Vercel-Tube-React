@@ -19,8 +19,9 @@ import {
 } from "react-icons/fa";
 
 import { MdFeaturedPlayList } from "react-icons/md";
-
 import { AiFillCloseCircle } from "react-icons/ai";
+
+import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 
 export {
 	FaBeer,
@@ -42,4 +43,6 @@ export {
 	FaShareSquare,
 	FaWindowClose,
 	AiFillCloseCircle,
+	AiOutlineLike,
+	AiFillLike,
 };

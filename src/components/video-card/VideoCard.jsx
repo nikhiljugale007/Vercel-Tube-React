@@ -110,7 +110,7 @@ const VideoCard = ({ video }) => {
 											className="list-item"
 											onClick={() => removeVideoFromWatchLater()}
 										>
-											<FaClock />
+											<FaClock className="filled-icon" size={20} />
 											Remove From watch later
 										</li>
 									) : (
@@ -127,7 +127,8 @@ const VideoCard = ({ video }) => {
 											className="list-item"
 											onClick={() => removeVideoFromLikedVideos()}
 										>
-											<FaThumbsUp /> Remove from liked Videos
+											<FaThumbsUp className="filled-icon" size={20} /> Remove
+											from liked Videos
 										</li>
 									) : (
 										<li
