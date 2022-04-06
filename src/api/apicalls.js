@@ -185,7 +185,6 @@ const addPlaylist = async (playlist) => {
 	}
 };
 const removePlaylist = async (id) => {
-	console.log(id);
 	try {
 		const response = await axios.delete(`api/user/playlists/${id}`, {
 			headers,

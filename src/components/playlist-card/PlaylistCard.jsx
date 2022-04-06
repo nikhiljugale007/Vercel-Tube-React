@@ -2,10 +2,11 @@ import "./PlaylistCard.css";
 import { AiFillDelete } from "../../icons";
 import { removePlaylist } from "../../api/apicalls";
 import { useVideoContext } from "../../context/VideoContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export const PlaylistCard = ({ playlist }) => {
 	const { _id, title, videos } = playlist;
 	const { videoDispatch } = useVideoContext();
+	const navigate = useNavigate();
 	const deletePlaylist = async () => {
 		console.log(_id);
 		const response = await removePlaylist(_id);
@@ -13,6 +14,7 @@ export const PlaylistCard = ({ playlist }) => {
 
 		if (response.success) {
 			videoDispatch({ type: "SET_PLAYLISTS", payload: response.playlists });
+			navigate("/playlist");
 		} else {
 			console.log("ERR");
 		}

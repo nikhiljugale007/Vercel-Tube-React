@@ -75,7 +75,7 @@ export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 									className="typo-label list-item"
 									onClick={() => removeVideoFromSpecificPlaylist(item._id)}
 								>
-									<input type="checkbox" checked={true} />
+									<input type="checkbox" defaultChecked={true} />
 									{item.title + " "}
 								</label>
 							) : (
@@ -83,7 +83,7 @@ export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 									className="typo-label list-item"
 									onClick={() => addVideoToPlayList(item._id)}
 								>
-									<input type="checkbox" checked={false} />
+									<input type="checkbox" defaultChecked={false} />
 									{item.title + " "}
 								</p>
 							)}
