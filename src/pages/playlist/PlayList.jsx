@@ -23,7 +23,7 @@ const PlayList = () => {
 
 			<div className="grid  grid-4-responsive">
 				{videoState.playlists.map((item) => {
-					return <PlaylistCard playlist={item} />;
+					return <PlaylistCard playlist={item} key={item._id} />;
 				})}
 			</div>
 		</div>

@@ -90,7 +90,6 @@ export const getVideosFromPlaylistHandler = function (schema, request) {
 	if (user) {
 		const playlistId = request.params.playlistId;
 		const playlist = user.playlists.find((item) => item._id === playlistId);
-		console.log("INSIDE", playlist);
 		return new Response(200, {}, { playlist });
 	}
 	return new Response(

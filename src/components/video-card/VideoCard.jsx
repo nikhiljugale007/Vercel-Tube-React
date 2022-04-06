@@ -14,8 +14,9 @@ import {
 	removeFromLikedVideos,
 	addToHistory,
 	removeFromHistory,
+	deleteFromSpecificPlaylist,
 } from "../../api/apicalls";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
 import { Modal } from "../playlist-modal/Modal";
 const VideoCard = ({ video, card_type }) => {
@@ -108,6 +109,16 @@ const VideoCard = ({ video, card_type }) => {
 		setShowPlaylistModal(true);
 		setShowDropDown(false);
 	};
+	const { playlistId } = useParams();
+	const removeVideoFromPlaylist = async () => {
+		const response = await deleteFromSpecificPlaylist(playlistId, _id);
+		if (response.success) {
+			videoDispatch({ type: "SET_PLAYLISTBY_ID", payload: response.playlist });
+			console.log(response.playlist);
+		} else {
+			console.log("ERR");
+		}
+	};
 	return (
 		<>
 			{showPlaylistModal && (
@@ -128,6 +139,14 @@ const VideoCard = ({ video, card_type }) => {
 						<button
 							className="btn btn-outlined btn-icon ecommerce-chip-right"
 							onClick={removeVideoFromHistory}
+						>
+							<AiFillCloseCircle size={20} className="filled-icon" />
+						</button>
+					)}
+					{card_type === "PLAY_LIST_CARD" && (
+						<button
+							className="btn btn-outlined btn-icon ecommerce-chip-right"
+							onClick={removeVideoFromPlaylist}
 						>
 							<AiFillCloseCircle size={20} className="filled-icon" />
 						</button>

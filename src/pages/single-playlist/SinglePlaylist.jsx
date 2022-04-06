@@ -2,25 +2,17 @@ import "./SinglePlaylist.css";
 import { useParams } from "react-router-dom";
 import { VideoCard } from "../../components";
 import { useEffect, useState } from "react";
-import { getPlaylistById } from "../../api/apicalls";
+import { useVideoContext } from "../../context/VideoContext";
 const SinglePlaylist = () => {
 	const { playlistId } = useParams();
 	const [playlist, setPlaylist] = useState();
 	const [loading, setLoading] = useState(true);
+	const { videoState } = useVideoContext();
 	useEffect(() => {
-		const getPlaylist = async () => {
-			setLoading(true);
-			const response = await getPlaylistById(playlistId);
-			console.log(response);
-			if (response.success) {
-				setPlaylist(response.playlist);
-				setLoading(false);
-			} else {
-				console.log("ERR");
-			}
-		};
-		getPlaylist();
-	}, [playlistId]);
+		setLoading(true);
+		setPlaylist(videoState.playlists.find((item) => item._id === playlistId));
+		setLoading(false);
+	}, [videoState, playlistId]);
 
 	return (
 		<div>

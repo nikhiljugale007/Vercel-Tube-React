@@ -197,10 +197,8 @@ const removePlaylist = async (id) => {
 	}
 };
 const getPlaylistById = async (id) => {
-	console.log(id);
 	try {
 		const response = await axios.get(`/api/user/playlists/${id}`, { headers });
-		console.log("API", response);
 		return { playlist: response.data.playlist, success: true };
 	} catch (err) {
 		console.log(err);
@@ -222,7 +220,12 @@ const addToSpecificPlaylist = async (id, currentVideo) => {
 };
 const deleteFromSpecificPlaylist = async (playlist_id, video_id) => {
 	try {
-		const response = await axios.delete(`api/user/${playlist_id}/${video_id}`);
+		const response = await axios.delete(
+			`/api/user/playlists/${playlist_id}/${video_id}`,
+			{
+				headers,
+			}
+		);
 		return { playlist: response.data.playlist, success: true };
 	} catch (err) {
 		console.log(err);
