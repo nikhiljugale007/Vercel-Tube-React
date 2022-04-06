@@ -14,13 +14,13 @@ import Mockman from "mockman-js";
 import { useVideoContext } from "./context/VideoContext";
 import { useEffect } from "react";
 import { getPlaylists } from "./api/apicalls";
+import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
 function App() {
 	const { videoDispatch } = useVideoContext();
 
 	useEffect(() => {
 		const getAllPlaylists = async () => {
 			const response = await getPlaylists();
-			console.log(response);
 			if (response.success) {
 				videoDispatch({ type: "SET_PLAYLISTS", payload: response.playlists });
 			} else {
@@ -42,6 +42,7 @@ function App() {
 						<Route path="/videos" element={<VideoListing />} />
 						<Route path="/videos/:id" element={<SingleVideo />} />
 						<Route path="/playlist" element={<PlayList />} />
+						<Route path="/playlist/:playlistId" element={<SinglePlaylist />} />
 						<Route path="/watch-later" element={<WatchLater />} />
 						<Route path="/history" element={<History />} />
 						<Route path="/liked-videos" element={<LikedVideos />} />

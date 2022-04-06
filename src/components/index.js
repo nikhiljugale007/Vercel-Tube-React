@@ -5,3 +5,4 @@ export { Tab } from "./tab/Tab";
 export { VideoPlayer } from "./video-player/VideoPlayer";
 export { HzVideoCard } from "./horizontal-video-card/HzVideoCard";
 export { Modal } from "./playlist-modal/Modal";
+export { PlaylistCard } from "./playlist-card/PlaylistCard";

@@ -185,8 +185,11 @@ const addPlaylist = async (playlist) => {
 	}
 };
 const removePlaylist = async (id) => {
+	console.log(id);
 	try {
-		const response = axios.delete(`api/user/playlists/${id}`);
+		const response = await axios.delete(`api/user/playlists/${id}`, {
+			headers,
+		});
 		return { playlists: response.data.playlists, success: true };
 	} catch (err) {
 		console.log(err);
@@ -194,8 +197,10 @@ const removePlaylist = async (id) => {
 	}
 };
 const getPlaylistById = async (id) => {
+	console.log(id);
 	try {
-		const response = axios.get(`/api/user/playlists/${id}`);
+		const response = await axios.get(`/api/user/playlists/${id}`, { headers });
+		console.log("API", response);
 		return { playlist: response.data.playlist, success: true };
 	} catch (err) {
 		console.log(err);
