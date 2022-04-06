@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 export const videos = [
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=rpPCjyVfQOo",
+		url: "https://www.youtube.com/embed/rpPCjyVfQOo",
 		title: "Ind Vs Aus| Dettol One Day Series 2020 | ",
 		description:
 			"Watch the full highlights of the action-packed third Dettol ODI in Canberra as India claimed a consolation victory to finish the 50-over series with Hardik Pandya and Shardul Thakur the heroes for the visitors.",
@@ -20,7 +20,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=Y1J9_9-vNcU",
+		url: "https://www.youtube.com/embed/Y1J9_9-vNcU",
 		title: "England v India - Day 5 Highlights | 2nd LV= Insurance Test 2021",
 		description:
 			"Watch match highlights from Day 5 the 2nd LV= Insurance Test between England and India at Lord's.",
@@ -33,7 +33,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=OeGTSVJV9nQ",
+		url: "https://www.youtube.com/embed/OeGTSVJV9nQ",
 		title: "3rd ODI | India vs Srilanka | India tour of Sri Lanka",
 		description:
 			"India sealed the ODI series with a fantastic win over Sri Lanka thanks to Deepak Chahar's heroics. The Lankans entered to bat first and finished with a score of 275 for 9 after 50 overs.",
@@ -60,7 +60,7 @@ export const videos = [
 
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=OeGTSVJV9nQ",
+		url: "https://www.youtube.com/embed/OeGTSVJV9nQ",
 		title: "3rd ODI | India vs Srilanka | India tour of Sri Lanka",
 		description:
 			"India sealed the ODI series with a fantastic win over Sri Lanka thanks to Deepak Chahar's heroics. The Lankans entered to bat first and finished with a score of 275 for 9 after 50 overs.",
@@ -73,7 +73,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=Y1J9_9-vNcU",
+		url: "https://www.youtube.com/embed/Y1J9_9-vNcU",
 		title: "England v India - Day 5 Highlights | 2nd LV= Insurance Test 2021",
 		description:
 			"Watch match highlights from Day 5 the 2nd LV= Insurance Test between England and India at Lord's.",
@@ -87,7 +87,7 @@ export const videos = [
 
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=Mvs1JXYfd6Q",
+		url: "https://www.youtube.com/embed/Mvs1JXYfd6Q",
 		title: "Super Over Thriller| 4th T20 | Ind vs Nz",
 		description:
 			"The visiting Indian team took a 4-0 lead in the five match T20 series against the BLACKCAPS at SKY Stadium in another thriller.",
@@ -100,7 +100,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=rpPCjyVfQOo",
+		url: "https://www.youtube.com/embed/rpPCjyVfQOo",
 		title: "Ind Vs Aus| Dettol One Day Series 2020 | ",
 		description:
 			"Watch the full highlights of the action-packed third Dettol ODI in Canberra as India claimed a consolation victory to finish the 50-over series with Hardik Pandya and Shardul Thakur the heroes for the visitors.",

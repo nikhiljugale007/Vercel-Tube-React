@@ -10,3 +10,6 @@
 .video-grid {
 	background-color: rebeccapurple;
 }
+.filled-icon {
+	color: var(--primary-color);
+}

@@ -6,6 +6,10 @@
 .flex-hz {
 	display: flex;
 }
+.flex-vt {
+	display: flex;
+	flex-direction: column;
+}
 .flex-hz-center {
 	display: flex;
 	align-items: center;

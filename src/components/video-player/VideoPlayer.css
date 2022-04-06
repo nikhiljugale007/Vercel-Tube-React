@@ -1,0 +1,13 @@
+.video-player-container {
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid black;
+}
+.video-player {
+	height: 100%;
+	width: 100%;
+}
+.option-container {
+	display: flex;
+	gap: 3rem;
+}

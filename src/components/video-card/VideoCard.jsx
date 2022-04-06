@@ -4,7 +4,7 @@ import {
 	FaEllipsisV,
 	MdFeaturedPlayList,
 	FaClock,
-	FaShareSquare,
+	FaThumbsUp,
 	AiFillCloseCircle,
 } from "../../icons";
 import {
@@ -13,6 +13,7 @@ import {
 	removeFromWatchLater,
 	removeFromLikedVideos,
 } from "../../api/apicalls";
+import { Link } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
 const VideoCard = ({ video }) => {
 	const { videoState, videoDispatch } = useVideoContext();
@@ -70,11 +71,13 @@ const VideoCard = ({ video }) => {
 
 	return (
 		<div className="card">
-			<img
-				className="card-img-container"
-				src={thumbnailImageUrl}
-				alt="thumbnail"
-			/>
+			<Link to={`/videos/${_id}`}>
+				<img
+					className="card-img-container"
+					src={thumbnailImageUrl}
+					alt="thumbnail"
+				/>
+			</Link>
 			<div className="card-body">
 				<div className="card-body-sub-container">
 					<div className="flex-hz">
@@ -107,7 +110,7 @@ const VideoCard = ({ video }) => {
 											className="list-item"
 											onClick={() => removeVideoFromWatchLater()}
 										>
-											<FaClock />
+											<FaClock className="filled-icon" size={20} />
 											Remove From watch later
 										</li>
 									) : (
@@ -124,14 +127,15 @@ const VideoCard = ({ video }) => {
 											className="list-item"
 											onClick={() => removeVideoFromLikedVideos()}
 										>
-											<FaShareSquare /> Remove from liked Videos
+											<FaThumbsUp className="filled-icon" size={20} /> Remove
+											from liked Videos
 										</li>
 									) : (
 										<li
 											className="list-item"
 											onClick={() => addVideoToLikedVideo()}
 										>
-											<FaShareSquare /> Add to liked Videos
+											<FaThumbsUp /> Add to liked Videos
 										</li>
 									)}
 								</ul>

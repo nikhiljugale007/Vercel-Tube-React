@@ -1,0 +1,35 @@
+.page-container {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 70% 30%;
+	position: relative;
+}
+.videoplayer-container {
+	padding: 0 2rem;
+}
+.suggested-video-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 1rem;
+}
+.channel-logo {
+	align-self: flex-start;
+}
+.video-description-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+.btn-danger {
+	height: fit-content;
+}
+
+@media only screen and (max-width: 1024px) {
+	.page-container {
+		grid-template-columns: 1fr;
+	}
+	.videoplayer-container {
+		padding: 0;
+	}
+}

@@ -1,12 +1,12 @@
 import { createContext, useContext, useReducer } from "react";
-import { videos, TabData } from "../pages/video-listing/TabData";
+import { TabData } from "../pages/video-listing/TabData";
 import { getFilteredVideos } from "./VideoFilterFunction";
 import { VideoReducerFunction } from "./VideoReducerFunction";
 
 const VideoContext = createContext();
 
 const contextInitialValue = {
-	videos: videos,
+	videos: [],
 	watchlater: [],
 	likedvideos: [],
 	history: [],
