@@ -12,12 +12,16 @@ import {
 	addToLikedVideos,
 	removeFromWatchLater,
 	removeFromLikedVideos,
+	addToHistory,
+	removeFromHistory,
 } from "../../api/apicalls";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, card_type }) => {
+	console.log(card_type);
 	const { videoState, videoDispatch } = useVideoContext();
 	const [showDropDown, setShowDropDown] = useState(false);
+	const navigate = useNavigate();
 	const { _id, title, authorImageUrl, thumbnailImageUrl, channelName } = video;
 	const toggleOptionMenu = () => {
 		setShowDropDown((prev) => !prev);
@@ -69,15 +73,51 @@ const VideoCard = ({ video }) => {
 		return videoState.likedvideos.find((item) => item._id === _id);
 	};
 
+	const checkVideoInHistory = () => {
+		return videoState.history.find((item) => item._id === _id);
+	};
+	const addVideoToHistory = async () => {
+		const response = await addToHistory(video);
+		if (response.success) {
+			videoDispatch({ type: "SET_HISTORY", payload: response.history });
+		} else {
+			console.log("error");
+		}
+	};
+	const removeVideoFromHistory = async () => {
+		const response = await removeFromHistory(_id);
+
+		if (response.success) {
+			videoDispatch({ type: "SET_HISTORY", payload: response.history });
+		} else {
+			console.log("ERR");
+		}
+	};
+	const handleVideoCardClick = () => {
+		if (checkVideoInHistory()) {
+			removeVideoFromHistory();
+		}
+		addVideoToHistory();
+		navigate(`/videos/${_id}`);
+	};
 	return (
 		<div className="card">
-			<Link to={`/videos/${_id}`}>
+			<div class="badge-image-container">
 				<img
 					className="card-img-container"
 					src={thumbnailImageUrl}
 					alt="thumbnail"
+					onClick={handleVideoCardClick}
 				/>
-			</Link>
+				{card_type === "HISTORY_CARD" && (
+					<button
+						class="btn btn-outlined btn-icon ecommerce-chip-right"
+						onClick={removeVideoFromHistory}
+					>
+						<AiFillCloseCircle size={20} className="filled-icon" />
+					</button>
+				)}
+			</div>
 			<div className="card-body">
 				<div className="card-body-sub-container">
 					<div className="flex-hz">

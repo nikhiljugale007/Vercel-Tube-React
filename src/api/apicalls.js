@@ -124,6 +124,7 @@ const removeFromHistory = async (itemId) => {
 		});
 		return { history: response.data.history, success: true };
 	} catch (err) {
+		console.log(err);
 		return { history: [], success: false };
 	}
 };

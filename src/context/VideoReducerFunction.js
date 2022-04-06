@@ -23,6 +23,11 @@ const VideoReducerFunction = (state, action) => {
 				...state,
 				likedvideos: action.payload,
 			};
+		case "SET_HISTORY":
+			return {
+				...state,
+				history: action.payload,
+			};
 		case "SET_CATEGORY":
 			return {
 				...state,

@@ -10,6 +10,8 @@ import {
 	addToLikedVideos,
 	removeFromWatchLater,
 	removeFromLikedVideos,
+	addToHistory,
+	removeFromHistory,
 } from "../../api/apicalls";
 import { useVideoContext } from "../../context/VideoContext";
 
@@ -56,6 +58,7 @@ const VideoPlayer = ({ video }) => {
 	const checkVideoInLikedVideo = () => {
 		return videoState.likedvideos.find((item) => item._id === video._id);
 	};
+
 	return (
 		<div className="video-player-container flex-vt">
 			<iframe
