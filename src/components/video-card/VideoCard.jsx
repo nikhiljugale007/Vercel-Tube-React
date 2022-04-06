@@ -17,9 +17,11 @@ import {
 } from "../../api/apicalls";
 import { useNavigate } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
+import { Modal } from "../playlist-modal/Modal";
 const VideoCard = ({ video, card_type }) => {
 	const { videoState, videoDispatch } = useVideoContext();
 	const [showDropDown, setShowDropDown] = useState(false);
+	const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 	const navigate = useNavigate();
 	const { _id, title, authorImageUrl, thumbnailImageUrl, channelName } = video;
 	const toggleOptionMenu = () => {
@@ -102,94 +104,106 @@ const VideoCard = ({ video, card_type }) => {
 		addVideoToHistory();
 		navigate(`/videos/${_id}`);
 	};
+	const handlePlaylist = () => {
+		setShowPlaylistModal(true);
+		setShowDropDown(false);
+	};
 	return (
-		<div className="card">
-			<div class="badge-image-container">
-				<img
-					className="card-img-container"
-					src={thumbnailImageUrl}
-					alt="thumbnail"
-					onClick={handleVideoCardClick}
+		<>
+			{showPlaylistModal && (
+				<Modal
+					setShowPlaylistModal={setShowPlaylistModal}
+					currentVideo={video}
 				/>
-				{card_type === "HISTORY_CARD" && (
-					<button
-						class="btn btn-outlined btn-icon ecommerce-chip-right"
-						onClick={removeVideoFromHistory}
-					>
-						<AiFillCloseCircle size={20} className="filled-icon" />
-					</button>
-				)}
-			</div>
-			<div className="card-body">
-				<div className="card-body-sub-container">
-					<div className="flex-hz">
-						<img
-							className="channel-logo"
-							alt="avatar"
-							loading="lazy"
-							src={authorImageUrl}
-						/>
-						<div className="flex-vt">
-							<p className="h6 ellipsis">{title}</p>
-							<p className="text-small text-gray">{channelName}</p>
-							<div className="card-sub-container text-gray">
-								<p className="text-small">6k Views</p>
-								<p>.</p>
-								<p className="text-small">5Months ago</p>
+			)}
+			<div className="card">
+				<div className="badge-image-container">
+					<img
+						className="card-img-container"
+						src={thumbnailImageUrl}
+						alt="thumbnail"
+						onClick={handleVideoCardClick}
+					/>
+					{card_type === "HISTORY_CARD" && (
+						<button
+							className="btn btn-outlined btn-icon ecommerce-chip-right"
+							onClick={removeVideoFromHistory}
+						>
+							<AiFillCloseCircle size={20} className="filled-icon" />
+						</button>
+					)}
+				</div>
+				<div className="card-body">
+					<div className="card-body-sub-container">
+						<div className="flex-hz">
+							<img
+								className="channel-logo"
+								alt="avatar"
+								loading="lazy"
+								src={authorImageUrl}
+							/>
+							<div className="flex-vt">
+								<p className="h6 ellipsis">{title}</p>
+								<p className="text-small text-gray">{channelName}</p>
+								<div className="card-sub-container text-gray">
+									<p className="text-small">6k Views</p>
+									<p>.</p>
+									<p className="text-small">5Months ago</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div className="dropdown-container">
-						{showDropDown && (
-							<div className="dropdown-menu">
-								<ul className="list list-style-nostyle">
-									<li className="list-item">
-										<MdFeaturedPlayList />
-										Add to playlist
-									</li>
-									{checkVideoInWatchLater() ? (
-										<li
-											className="list-item"
-											onClick={() => removeVideoFromWatchLater()}
-										>
-											<FaClock className="filled-icon" size={20} />
-											Remove From watch later
+						<div className="dropdown-container">
+							{showDropDown && (
+								<div className="dropdown-menu">
+									<ul className="list list-style-nostyle">
+										<li className="list-item" onClick={handlePlaylist}>
+											<MdFeaturedPlayList />
+											Add to playlist
 										</li>
-									) : (
-										<li
-											className="list-item"
-											onClick={() => addVideoToWatchLater()}
-										>
-											<FaClock />
-											Add to watch later
-										</li>
-									)}
-									{checkVideoInLikedVideo() ? (
-										<li
-											className="list-item"
-											onClick={() => removeVideoFromLikedVideos()}
-										>
-											<FaThumbsUp className="filled-icon" size={20} /> Remove
-											from liked Videos
-										</li>
-									) : (
-										<li
-											className="list-item"
-											onClick={() => addVideoToLikedVideo()}
-										>
-											<FaThumbsUp /> Add to liked Videos
-										</li>
-									)}
-								</ul>
+										{checkVideoInWatchLater() ? (
+											<li
+												className="list-item"
+												onClick={() => removeVideoFromWatchLater()}
+											>
+												<FaClock className="filled-icon" size={20} />
+												Remove From watch later
+											</li>
+										) : (
+											<li
+												className="list-item"
+												onClick={() => addVideoToWatchLater()}
+											>
+												<FaClock />
+												Add to watch later
+											</li>
+										)}
+										{checkVideoInLikedVideo() ? (
+											<li
+												className="list-item"
+												onClick={() => removeVideoFromLikedVideos()}
+											>
+												<FaThumbsUp className="filled-icon" size={20} /> Remove
+												from liked Videos
+											</li>
+										) : (
+											<li
+												className="list-item"
+												onClick={() => addVideoToLikedVideo()}
+											>
+												<FaThumbsUp /> Add to liked Videos
+											</li>
+										)}
+									</ul>
+								</div>
+							)}
+							<div className="option-icon" onClick={toggleOptionMenu}>
+								{showDropDown ? <AiFillCloseCircle /> : <FaEllipsisV />}
 							</div>
-						)}
-						<div className="option-icon" onClick={toggleOptionMenu}>
-							{showDropDown ? <AiFillCloseCircle /> : <FaEllipsisV />}
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

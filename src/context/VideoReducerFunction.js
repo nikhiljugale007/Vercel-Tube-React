@@ -33,6 +33,18 @@ const VideoReducerFunction = (state, action) => {
 				...state,
 				categories: action.payload,
 			};
+		case "SET_PLAYLISTS":
+			return {
+				...state,
+				playlists: action.payload,
+			};
+		case "SET_PLAYLISTBY_ID":
+			return {
+				...state,
+				playlists: state.playlists.map((item) =>
+					item._id === action.payload._id ? action.payload : item
+				),
+			};
 		default:
 			return state;
 	}
