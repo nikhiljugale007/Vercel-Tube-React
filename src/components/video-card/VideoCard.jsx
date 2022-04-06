@@ -94,9 +94,12 @@ const VideoCard = ({ video, card_type }) => {
 		}
 	};
 	const handleVideoCardClick = () => {
+		// checking wheather video is already in history or not
 		if (checkVideoInHistory()) {
+			// if yes them remove that entry
 			removeVideoFromHistory();
 		}
+		// add video to history
 		addVideoToHistory();
 		navigate(`/videos/${_id}`);
 	};

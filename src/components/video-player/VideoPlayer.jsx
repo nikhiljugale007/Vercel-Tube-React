@@ -10,8 +10,6 @@ import {
 	addToLikedVideos,
 	removeFromWatchLater,
 	removeFromLikedVideos,
-	addToHistory,
-	removeFromHistory,
 } from "../../api/apicalls";
 import { useVideoContext } from "../../context/VideoContext";
 
