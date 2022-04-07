@@ -8,7 +8,7 @@ import {
 	FaBell,
 } from "../../icons";
 import "./Header.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 const Header = () => {
 	const { authState } = useAuthContext();
