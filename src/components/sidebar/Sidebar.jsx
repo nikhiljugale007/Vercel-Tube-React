@@ -73,6 +73,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 						className={`sidebar-item link-no-style + ${
 							location === "/" ? "active" : ""
 						}`}
+						onClick={() => setMobileSidebar(false)}
 					>
 						<FaHome size={20} /> <p>Home</p>
 					</NavLink>
@@ -81,6 +82,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 						className={`sidebar-item link-no-style + ${
 							location === "/videos" ? "active" : ""
 						}`}
+						onClick={() => setMobileSidebar(false)}
 					>
 						<FaCompass size={20} /> <p>Explore</p>
 					</NavLink>
@@ -89,6 +91,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 						className={`sidebar-item link-no-style + ${
 							location === "/playlist" ? "active" : ""
 						}`}
+						onClick={() => setMobileSidebar(false)}
 					>
 						<FaThList size={20} /> <p>Playlist</p>
 					</NavLink>
@@ -97,6 +100,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 						className={`sidebar-item link-no-style + ${
 							location === "/liked-videos" ? "active" : ""
 						}`}
+						onClick={() => setMobileSidebar(false)}
 					>
 						<FaThumbsUp size={20} /> <p>Liked Videos</p>
 					</NavLink>
@@ -105,6 +109,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 						className={`sidebar-item link-no-style + ${
 							location === "/watch-later" ? "active" : ""
 						}`}
+						onClick={() => setMobileSidebar(false)}
 					>
 						<FaClock size={20} /> <p>Watch Later</p>
 					</NavLink>
@@ -113,6 +118,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 						className={`sidebar-item link-no-style + ${
 							location === "/history" ? "active" : ""
 						}`}
+						onClick={() => setMobileSidebar(false)}
 					>
 						<FaHistory size={20} /> <p>History</p>
 					</NavLink>
