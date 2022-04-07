@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { CheckboxInput, FormInput } from "../../components";
 import { useState } from "react";
 import { validateForm } from "./FormValidator";
-// import { signupuser } from "../../../api/apicall";
 import { useNavigate } from "react-router";
 import { signupuser } from "../../api/apicalls";
 
@@ -14,7 +13,7 @@ const initialSignUpFormState = {
 	accept_terms: false,
 };
 const Signup = () => {
-	const [signUpFormState, setsignUpFormState] = useState(
+	const [signUpFormState, setSignUpFormState] = useState(
 		initialSignUpFormState
 	);
 	const [formError, setFormError] = useState(initialSignUpFormState);
@@ -22,10 +21,10 @@ const Signup = () => {
 
 	const inputChangeHandler = (e) => {
 		const new_val = { [e.target.name]: e.target.value };
-		setsignUpFormState((prev) => ({ ...prev, ...new_val }));
+		setSignUpFormState((prev) => ({ ...prev, ...new_val }));
 	};
 	const checkboxChangeHandler = (e) => {
-		setsignUpFormState((prev) => ({
+		setSignUpFormState((prev) => ({
 			...prev,
 			accept_terms: !prev.accept_terms,
 		}));
