@@ -46,7 +46,7 @@ export const videos = [
 	},
 	{
 		_id: uuid(),
-		url: "https://www.youtube.com/watch?v=Mvs1JXYfd6Q",
+		url: "https://www.youtube.com/embed/Mvs1JXYfd6Q",
 		title: "Super Over Thriller| 4th T20 | Ind vs Nz",
 		description:
 			"The visiting Indian team took a 4-0 lead in the five match T20 series against the BLACKCAPS at SKY Stadium in another thriller.",
