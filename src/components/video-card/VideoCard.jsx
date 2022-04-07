@@ -114,7 +114,6 @@ const VideoCard = ({ video, card_type }) => {
 		const response = await deleteFromSpecificPlaylist(playlistId, _id);
 		if (response.success) {
 			videoDispatch({ type: "SET_PLAYLISTBY_ID", payload: response.playlist });
-			console.log(response.playlist);
 		} else {
 			console.log("ERR");
 		}

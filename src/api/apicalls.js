@@ -171,7 +171,6 @@ const getPlaylists = async () => {
 	}
 };
 const addPlaylist = async (playlist) => {
-	console.log(playlist);
 	try {
 		const response = await axios.post(
 			"/api/user/playlists",
