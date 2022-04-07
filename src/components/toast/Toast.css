@@ -1,0 +1,23 @@
+.toast {
+	position: fixed;
+	top: 8rem;
+	right: 0;
+}
+.toast .line {
+	height: 5px;
+	background: white;
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	animation: dude 0.75s 1 forwards;
+	background: var(--success-color);
+}
+
+@keyframes dude {
+	0% {
+		left: 100%;
+	}
+	100% {
+		left: 0%;
+	}
+}

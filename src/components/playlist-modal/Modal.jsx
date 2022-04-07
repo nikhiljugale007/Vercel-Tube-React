@@ -7,10 +7,13 @@ import {
 	addToSpecificPlaylist,
 	deleteFromSpecificPlaylist,
 } from "../../api/apicalls";
+import { Toast } from "../toast/Toast";
 export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 	const { videoState, videoDispatch } = useVideoContext();
 	const [newPlaylist, setNewPlaylist] = useState(false);
 	const [playListName, setPlayListName] = useState("");
+	const [toast, setToast] = useState({ label: "", showToast: false });
+
 	const closeModal = () => {
 		setShowPlaylistModal(false);
 	};
@@ -21,31 +24,53 @@ export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 	const createNewPlaylist = async () => {
 		const playlist = { title: playListName };
 		setPlayListName("");
+		setToast((prev) => ({
+			...prev,
+			label: "Creating new playlist",
+			showToast: true,
+		}));
+
 		const response = await addPlaylist(playlist);
 		if (response.success) {
 			videoDispatch({ type: "SET_PLAYLISTS", payload: response.playlists });
+			setTimeout(() => {
+				setToast((prev) => ({ ...prev, label: "", showToast: false }));
+			}, 1000);
 		} else {
 			console.log("ERR");
 		}
 	};
 	const addVideoToPlayList = async (id) => {
+		setToast((prev) => ({
+			...prev,
+			label: "Adding video to playlist",
+			showToast: true,
+		}));
 		const response = await addToSpecificPlaylist(id, currentVideo);
 		if (response.success) {
 			videoDispatch({ type: "SET_PLAYLISTBY_ID", payload: response.playlist });
-			console.log(response.playlist);
+			setTimeout(() => {
+				setToast((prev) => ({ ...prev, label: "", showToast: false }));
+			}, 1000);
 		} else {
 			console.log("ERR");
 		}
 	};
 	const removeVideoFromSpecificPlaylist = async (playlistId) => {
+		setToast((prev) => ({
+			...prev,
+			label: "Removing video from playlist",
+			showToast: true,
+		}));
 		const response = await deleteFromSpecificPlaylist(
 			playlistId,
 			currentVideo._id
 		);
-		console.log(response);
 		if (response.success) {
 			videoDispatch({ type: "SET_PLAYLISTBY_ID", payload: response.playlist });
-			console.log(response.playlist);
+			setTimeout(() => {
+				setToast((prev) => ({ ...prev, label: "", showToast: false }));
+			}, 1000);
 		} else {
 			console.log("ERR");
 		}
@@ -60,6 +85,7 @@ export const Modal = ({ setShowPlaylistModal, currentVideo }) => {
 	};
 	return (
 		<div className="playlist-modal">
+			{toast.showToast && <Toast label={toast.label} />}
 			<div className="flex-hz-space-bw">
 				<p className="typo-label">Add to playlist</p>
 				<button className="btn-icon p-1" onClick={closeModal}>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { getLikedVideos } from "../../api/apicalls";
 import { useVideoContext } from "../../context/VideoContext";
 import { VideoCard } from "../../components";
+import { empty_list } from "./../../assets/index";
 const LikedVideos = () => {
 	const { videoState, videoDispatch } = useVideoContext();
 
@@ -21,7 +22,12 @@ const LikedVideos = () => {
 	}, [videoDispatch]);
 	return (
 		<div>
-			{videoState.likedvideos.length < 1 && <h1>No liked videos </h1>}
+			{videoState.likedvideos.length < 1 && (
+				<div>
+					<p className="typo-title flex-hz-center">No liked videos yet</p>
+					<img className="img-responsive" src={empty_list} alt="empty-list" />
+				</div>
+			)}
 
 			<div className="grid  grid-4-responsive">
 				{videoState.likedvideos.map((video) => {

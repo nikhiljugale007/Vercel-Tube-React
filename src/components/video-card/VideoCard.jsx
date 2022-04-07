@@ -16,15 +16,18 @@ import {
 	removeFromHistory,
 	deleteFromSpecificPlaylist,
 } from "../../api/apicalls";
-import { useNavigate, useParams  } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
 import { Modal } from "../playlist-modal/Modal";
 import { useAuthContext } from "../../context/AuthContext";
+import { Toast } from "../toast/Toast";
 const VideoCard = ({ video, card_type }) => {
 	const { videoState, videoDispatch } = useVideoContext();
 	const { authState } = useAuthContext();
 	const [showDropDown, setShowDropDown] = useState(false);
 	const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+	const [toast, setToast] = useState({ label: "", showToast: false });
+
 	const navigate = useNavigate();
 	const { _id, title, authorImageUrl, thumbnailImageUrl, channelName } = video;
 	const toggleOptionMenu = () => {
@@ -41,20 +44,39 @@ const VideoCard = ({ video, card_type }) => {
 
 	const addVideoToWatchLater = async () => {
 		if (checkLoggedUser()) {
+			console.log("LOF", toast);
+			setToast((prev) => ({
+				...prev,
+				label: "Adding To WatchLater",
+				showToast: true,
+			}));
+
 			const response = await addToWatchLater(video);
 			if (response.success) {
 				videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
 				setShowDropDown((prev) => !prev);
+				setTimeout(() => {
+					setToast((prev) => ({ ...prev, label: "", showToast: false }));
+				}, 1000);
 			} else {
 				console.log("error");
 			}
 		}
 	};
 	const removeVideoFromWatchLater = async () => {
+		setToast((prev) => ({
+			...prev,
+			label: "Removing from WatchLater",
+			showToast: true,
+		}));
+
 		const response = await removeFromWatchLater(_id);
 		if (response.success) {
 			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
 			setShowDropDown((prev) => !prev);
+			setTimeout(() => {
+				setToast((prev) => ({ ...prev, label: "", showToast: false }));
+			}, 1000);
 		} else {
 			console.log("ERROR");
 		}
@@ -62,21 +84,38 @@ const VideoCard = ({ video, card_type }) => {
 
 	const addVideoToLikedVideo = async () => {
 		if (checkLoggedUser()) {
+			setToast((prev) => ({
+				...prev,
+				label: "Adding To Liked Videos",
+				showToast: true,
+			}));
+
 			const response = await addToLikedVideos(video);
 			if (response.success) {
-				console.log(response);
 				videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
 				setShowDropDown((prev) => !prev);
+				setTimeout(() => {
+					setToast((prev) => ({ ...prev, label: "", showToast: false }));
+				}, 1000);
 			} else {
 				console.log("error");
 			}
 		}
 	};
 	const removeVideoFromLikedVideos = async () => {
+		setToast((prev) => ({
+			...prev,
+			label: "Removing from Liked Videos",
+			showToast: true,
+		}));
+
 		const response = await removeFromLikedVideos(_id);
 		if (response.success) {
 			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
 			setShowDropDown((prev) => !prev);
+			setTimeout(() => {
+				setToast((prev) => ({ ...prev, label: "", showToast: false }));
+			}, 1000);
 		} else {
 			console.log("ERROR");
 		}
@@ -102,11 +141,27 @@ const VideoCard = ({ video, card_type }) => {
 			}
 		}
 	};
-	const removeVideoFromHistory = async () => {
+	const removeAlreadyPresentVideoFromHistory = async () => {
 		const response = await removeFromHistory(_id);
-
 		if (response.success) {
 			videoDispatch({ type: "SET_HISTORY", payload: response.history });
+		} else {
+			console.log("ERR");
+		}
+	};
+	const removeVideoFromHistory = async () => {
+		setToast((prev) => ({
+			...prev,
+			label: "Removing video from History",
+			showToast: true,
+		}));
+
+		const response = await removeFromHistory(_id);
+		if (response.success) {
+			videoDispatch({ type: "SET_HISTORY", payload: response.history });
+			setTimeout(() => {
+				setToast((prev) => ({ ...prev, label: "", showToast: false }));
+			}, 1000);
 		} else {
 			console.log("ERR");
 		}
@@ -115,7 +170,7 @@ const VideoCard = ({ video, card_type }) => {
 		// checking wheather video is already in history or not
 		if (checkVideoInHistory()) {
 			// if yes them remove that entry
-			removeVideoFromHistory();
+			removeAlreadyPresentVideoFromHistory();
 		}
 		// add video to history
 		addVideoToHistory();
@@ -138,6 +193,7 @@ const VideoCard = ({ video, card_type }) => {
 	};
 	return (
 		<>
+			{toast.showToast && <Toast label={toast.label} />}
 			{showPlaylistModal && (
 				<Modal
 					setShowPlaylistModal={setShowPlaylistModal}
