@@ -24,7 +24,7 @@ const LikedVideos = () => {
 		<div>
 			<p className="typo-title flex-hz-center">Liked Videos</p>
 			{videoState.likedvideos.length < 1 && (
-				<div>
+				<div className="flex-vt-center">
 					<p className="typo-title flex-hz-center">No liked videos yet</p>
 					<img className="img-responsive" src={empty_list} alt="empty-list" />
 				</div>

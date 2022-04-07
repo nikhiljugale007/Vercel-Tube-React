@@ -1,6 +1,7 @@
 .playlist-modal {
 	z-index: 10;
 	background-color: #fff;
+	box-shadow: 0 3px 10px var(--box-shadow);
 	width: 30rem;
 	max-height: 32rem;
 	position: absolute;
@@ -9,6 +10,7 @@
 	flex-direction: column;
 	border-radius: 10px;
 	padding: 1rem;
+	border-radius: 5px;
 }
 .playlist-container {
 	max-height: 15rem;

@@ -20,10 +20,9 @@ const PlayList = () => {
 	}, [videoDispatch]);
 	return (
 		<div>
-			{" "}
 			<p className="typo-title flex-hz-center">Playlist</p>
 			{videoState.playlists.length < 1 && (
-				<div>
+				<div className="flex-vt-center">
 					<p className="typo-title flex-hz-center">
 						You have no playlist created so far
 					</p>

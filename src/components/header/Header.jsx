@@ -27,10 +27,12 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 						<FaBars className="" size={20} />
 					)}
 				</button>
-				<p className="flex-hz youtube-icon">
-					<FaYoutube size={30} />
-					VercelTube
-				</p>
+				<NavLink to="/login" className="header-link">
+					<p className="flex-hz youtube-icon">
+						<FaYoutube size={30} />
+						VercelTube
+					</p>
+				</NavLink>
 			</div>
 			<div className="nav-sub-container hide">
 				<form className="search-bar">
@@ -44,11 +46,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</button>
 			</div>
 			<div className="nav-sub-container">
-				<NavLink
-					to="/profile"
-					className="inactive-link"
-					style={{ backgroundColor: "transparent", border: "none" }}
-				>
+				<NavLink to="/profile" className="header-link">
 					{authState.isLoggedIn ? (
 						<button className="btn btn-icon">
 							<FaUserCircle size={20} />

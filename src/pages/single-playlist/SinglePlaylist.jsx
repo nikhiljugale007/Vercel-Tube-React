@@ -20,7 +20,9 @@ const SinglePlaylist = () => {
 				<h1>Loading</h1>
 			) : (
 				<div>
-					<p className="typo-title pv-1">{playlist.title}</p>
+					<p className="typo-title pv-1">
+						Playlist Name: {" " + playlist.title}
+					</p>
 					{playlist.videos.length < 1 && (
 						<h1>You have no videos in this playlist </h1>
 					)}

@@ -47,7 +47,7 @@ const History = () => {
 				</button>
 			</div>
 			{videoState.history.length < 1 && (
-				<div>
+				<div className="flex-vt-center">
 					<p className="typo-title flex-hz-center">You have no watch history</p>
 					<img className="img-responsive" src={empty_list} alt="empty-list" />
 				</div>

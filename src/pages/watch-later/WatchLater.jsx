@@ -22,7 +22,7 @@ const WatchLater = () => {
 		<div>
 			<p className="typo-title flex-hz-center">Watch Later</p>
 			{videoState.watchlater.length < 1 && (
-				<div>
+				<div className="flex-vt-center">
 					<p className="typo-title flex-hz-center">
 						You have no videos in watch later
 					</p>
