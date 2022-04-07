@@ -14,24 +14,8 @@ import {
 	Signup,
 } from "./pages";
 import Mockman from "mockman-js";
-import { useVideoContext } from "./context/VideoContext";
-import { useEffect } from "react";
-import { getPlaylists } from "./api/apicalls";
 import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
 function App() {
-	// const { videoDispatch } = useVideoContext();
-	// useEffect(() => {
-	// 	const getAllPlaylists = async () => {
-	// 		const response = await getPlaylists();
-	// 		if (response.success) {
-	// 			videoDispatch({ type: "SET_PLAYLISTS", payload: response.playlists });
-	// 		} else {
-	// 			console.log("ERR");
-	// 		}
-	// 	};
-	// 	getAllPlaylists();
-	// }, [videoDispatch]);
-
 	return (
 		<>
 			<Header />

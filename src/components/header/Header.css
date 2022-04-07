@@ -27,6 +27,11 @@
 .btn-icon {
 	color: #000;
 }
+.inactive-link {
+	text-decoration: none;
+	background-color: transparent;
+	border: none;
+}
 @media (max-width: 48em) {
 	.hide {
 		display: none;

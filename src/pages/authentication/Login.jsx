@@ -38,7 +38,7 @@ const Login = () => {
 			localStorage.setItem("token", response.token);
 			authDispatch({ type: "SET_LOGGED_USER" });
 			console.log(location);
-			navigate(location?.state?.from);
+			location.state === null ? navigate("/") : navigate(location?.state?.from);
 		} else {
 			console.log("SOME ERROR1");
 		}

@@ -36,11 +36,19 @@ const Header = () => {
 				<button className="btn btn-icon">
 					<FaBell size={20} />
 				</button>
-				<Link to="/profile" className="link-no-style">
-					<button className="btn btn-icon">
-						{authState.isLoggedIn ? <FaUserCircle size={20} /> : <p>LOGIN</p>}
-					</button>
-				</Link>
+				<NavLink
+					to="/profile"
+					className="inactive-link"
+					style={{ backgroundColor: "transparent", border: "none" }}
+				>
+					{authState.isLoggedIn ? (
+						<button className="btn btn-icon">
+							<FaUserCircle size={20} />
+						</button>
+					) : (
+						<button className="btn btn-primary">LOGIN</button>
+					)}
+				</NavLink>
 			</div>
 		</nav>
 	);

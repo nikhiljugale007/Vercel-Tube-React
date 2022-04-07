@@ -14,16 +14,29 @@ import {
 import { useVideoContext } from "../../context/VideoContext";
 import { useState } from "react";
 import { Modal } from "../playlist-modal/Modal";
+import { useAuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
 const VideoPlayer = ({ video }) => {
 	const { videoState, videoDispatch } = useVideoContext();
+	const { authState } = useAuthContext();
 	const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+	const navigate = useNavigate();
 
+	const checkLoggedUser = () => {
+		if (!authState.isLoggedIn) {
+			navigate("/login");
+			return false;
+		}
+		return true;
+	};
 	const addVideoToWatchLater = async () => {
-		const response = await addToWatchLater(video);
-		if (response.success) {
-			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
-		} else {
-			console.log("error");
+		if (checkLoggedUser()) {
+			const response = await addToWatchLater(video);
+			if (response.success) {
+				videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
+			} else {
+				console.log("error");
+			}
 		}
 	};
 	const removeVideoFromWatchLater = async () => {
@@ -35,12 +48,14 @@ const VideoPlayer = ({ video }) => {
 	};
 
 	const addVideoToLikedVideo = async () => {
-		const response = await addToLikedVideos(video);
-		if (response.success) {
-			console.log(response);
-			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
-		} else {
-			console.log("error");
+		if (checkLoggedUser()) {
+			const response = await addToLikedVideos(video);
+			if (response.success) {
+				console.log(response);
+				videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
+			} else {
+				console.log("error");
+			}
 		}
 	};
 	const removeVideoFromLikedVideos = async () => {
@@ -59,7 +74,9 @@ const VideoPlayer = ({ video }) => {
 		return videoState.likedvideos.find((item) => item._id === video._id);
 	};
 	const handlePlaylist = () => {
-		setShowPlaylistModal(true);
+		if (checkLoggedUser()) {
+			setShowPlaylistModal(true);
+		}
 	};
 	return (
 		<>

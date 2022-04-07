@@ -34,21 +34,23 @@ const VideoCard = ({ video, card_type }) => {
 	const checkLoggedUser = () => {
 		if (!authState.isLoggedIn) {
 			navigate("/login");
+			return false;
 		}
+		return true;
 	};
 
 	const addVideoToWatchLater = async () => {
-		checkLoggedUser();
-		const response = await addToWatchLater(video);
-		if (response.success) {
-			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
-			setShowDropDown((prev) => !prev);
-		} else {
-			console.log("error");
+		if (checkLoggedUser()) {
+			const response = await addToWatchLater(video);
+			if (response.success) {
+				videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
+				setShowDropDown((prev) => !prev);
+			} else {
+				console.log("error");
+			}
 		}
 	};
 	const removeVideoFromWatchLater = async () => {
-		checkLoggedUser();
 		const response = await removeFromWatchLater(_id);
 		if (response.success) {
 			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
@@ -59,18 +61,18 @@ const VideoCard = ({ video, card_type }) => {
 	};
 
 	const addVideoToLikedVideo = async () => {
-		checkLoggedUser();
-		const response = await addToLikedVideos(video);
-		if (response.success) {
-			console.log(response);
-			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
-			setShowDropDown((prev) => !prev);
-		} else {
-			console.log("error");
+		if (checkLoggedUser()) {
+			const response = await addToLikedVideos(video);
+			if (response.success) {
+				console.log(response);
+				videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
+				setShowDropDown((prev) => !prev);
+			} else {
+				console.log("error");
+			}
 		}
 	};
 	const removeVideoFromLikedVideos = async () => {
-		checkLoggedUser();
 		const response = await removeFromLikedVideos(_id);
 		if (response.success) {
 			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
@@ -120,9 +122,10 @@ const VideoCard = ({ video, card_type }) => {
 		navigate(`/videos/${_id}`);
 	};
 	const handlePlaylist = () => {
-		checkLoggedUser();
-		setShowPlaylistModal(true);
-		setShowDropDown(false);
+		if (checkLoggedUser()) {
+			setShowPlaylistModal(true);
+			setShowDropDown(false);
+		}
 	};
 	const { playlistId } = useParams();
 	const removeVideoFromPlaylist = async () => {
