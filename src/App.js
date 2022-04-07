@@ -20,7 +20,10 @@ function App() {
 	const [mobileSidebar, setMobileSidebar] = useState(false);
 	return (
 		<>
-			<Header setMobileSidebar={setMobileSidebar} />
+			<Header
+				mobileSidebar={mobileSidebar}
+				setMobileSidebar={setMobileSidebar}
+			/>
 			<div className="content-section">
 				<aside className="aside">
 					<Sidebar

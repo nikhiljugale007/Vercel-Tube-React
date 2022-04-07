@@ -32,6 +32,15 @@
 	background-color: transparent;
 	border: none;
 }
+.btn-sidebar-menu {
+	display: none;
+}
+@media only screen and (max-width: 768px) {
+	.btn-sidebar-menu {
+		display: block;
+	}
+}
+
 @media (max-width: 48em) {
 	.hide {
 		display: none;

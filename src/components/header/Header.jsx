@@ -1,6 +1,7 @@
 import React from "react";
 import {
 	FaBars,
+	AiOutlineCloseCircle,
 	FaYoutube,
 	FaUserCircle,
 	FaSearch,
@@ -10,17 +11,21 @@ import {
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-const Header = ({ setMobileSidebar }) => {
+const Header = ({ mobileSidebar, setMobileSidebar }) => {
 	const { authState } = useAuthContext();
 
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
 				<button
-					className="btn btn-icon"
+					className="btn btn-icon btn-sidebar-menu"
 					onClick={() => setMobileSidebar((prev) => !prev)}
 				>
-					<FaBars className="" size={20} />
+					{mobileSidebar ? (
+						<AiOutlineCloseCircle size={20} />
+					) : (
+						<FaBars className="" size={20} />
+					)}
 				</button>
 				<p className="flex-hz youtube-icon">
 					<FaYoutube size={30} />
@@ -39,9 +44,6 @@ const Header = ({ setMobileSidebar }) => {
 				</button>
 			</div>
 			<div className="nav-sub-container">
-				<button className="btn btn-icon">
-					<FaBell size={20} />
-				</button>
 				<NavLink
 					to="/profile"
 					className="inactive-link"

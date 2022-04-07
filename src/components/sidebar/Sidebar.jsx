@@ -15,6 +15,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 	});
 	return (
 		<>
+			{/* desktop sidebar */}
 			<div className="sidebar-container">
 				<NavLink
 					to="/"
@@ -59,6 +60,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 					<FaHistory size={20} /> <p>History</p>
 				</NavLink>
 			</div>
+			{/* mobile sidebar */}
 			{mobileSidebar && (
 				<div className="mobile-sidebar-container">
 					<NavLink

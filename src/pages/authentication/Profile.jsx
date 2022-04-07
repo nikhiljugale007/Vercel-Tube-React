@@ -8,7 +8,7 @@ const Profile = () => {
 	const navigate = useNavigate();
 	const signoutUser = () => {
 		localStorage.removeItem("token");
-		videoDispatch({ type: "RESET_PRODUCT_STATE" });
+		videoDispatch({ type: "RESET_VIDEO_STATE" });
 		authDispatch({ type: "LOGOUT_USER" });
 		navigate("/");
 	};
