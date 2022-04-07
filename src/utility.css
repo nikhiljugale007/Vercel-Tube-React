@@ -66,8 +66,8 @@
 	transform: scale(1.2);
 }
 .img-responsive {
-	max-height: 500px;
-	max-width: 500px;
+	max-height: 50rem;
+	max-width: 50rem;
 	aspect-ratio: 1;
 	justify-self: center;
 }
