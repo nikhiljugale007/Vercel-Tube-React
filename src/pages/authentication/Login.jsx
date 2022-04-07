@@ -1,15 +1,16 @@
 import "./authentication.css";
 import { CheckboxInput, FormInput } from "../../components";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-// import { loginuser } from "../../../api/apicall";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { loginuser } from "../../api/apicalls";
+import { useAuthContext } from "../../context/AuthContext";
 
 const inititalLoginState = { email: "", password: "" };
 
 const validateForm = (formState) => {
 	const { email, password } = formState;
+
 	const errors = {};
 
 	const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -27,13 +28,15 @@ const validateForm = (formState) => {
 const Login = () => {
 	const [loginFormState, setLoginFormState] = useState(inititalLoginState);
 	const [formError, setFormError] = useState(inititalLoginState);
-	let navigate = useNavigate();
+	const { authDispatch } = useAuthContext();
+	const navigate = useNavigate();
 
 	const loginUserFun = async () => {
 		const response = await loginuser(loginFormState);
 		if (response.success) {
 			localStorage.setItem("token", response.token);
-			navigate("/");
+			authDispatch({ type: "SET_LOGGED_USER" });
+			navigate("/profile");
 		} else {
 			console.log("SOME ERROR1");
 		}

@@ -1,10 +1,16 @@
+import { useAuthContext } from "../../context/AuthContext";
 import { useVideoContext } from "../../context/VideoContext";
 import "./authentication.css";
+import { useNavigate } from "react-router";
 const Profile = () => {
 	const { videoDispatch } = useVideoContext();
+	const { authDispatch } = useAuthContext();
+	const navigate = useNavigate();
 	const signoutUser = () => {
 		localStorage.removeItem("token");
 		videoDispatch({ type: "RESET_PRODUCT_STATE" });
+		authDispatch({ type: "LOGOUT_USER" });
+		navigate("/");
 	};
 	return (
 		<div>
