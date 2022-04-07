@@ -20,6 +20,8 @@ const PlayList = () => {
 	}, [videoDispatch]);
 	return (
 		<div>
+			{" "}
+			<p className="typo-title flex-hz-center">Playlist</p>
 			{videoState.playlists.length < 1 && (
 				<div>
 					<p className="typo-title flex-hz-center">
@@ -28,7 +30,6 @@ const PlayList = () => {
 					<img className="img-responsive" src={empty_list} alt="empty-list" />
 				</div>
 			)}
-
 			<div className="grid  grid-4-responsive">
 				{videoState.playlists.map((item) => {
 					return <PlaylistCard playlist={item} key={item._id} />;

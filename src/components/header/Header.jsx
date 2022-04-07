@@ -10,12 +10,18 @@ import {
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-const Header = () => {
+const Header = ({ setMobileSidebar }) => {
 	const { authState } = useAuthContext();
+
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
-				<FaBars className="" size={20} />
+				<button
+					className="btn btn-icon"
+					onClick={() => setMobileSidebar((prev) => !prev)}
+				>
+					<FaBars className="" size={20} />
+				</button>
 				<p className="flex-hz youtube-icon">
 					<FaYoutube size={30} />
 					VercelTube

@@ -20,6 +20,7 @@ const WatchLater = () => {
 	}, [videoDispatch]);
 	return (
 		<div>
+			<p className="typo-title flex-hz-center">Watch Later</p>
 			{videoState.watchlater.length < 1 && (
 				<div>
 					<p className="typo-title flex-hz-center">

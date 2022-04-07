@@ -22,6 +22,7 @@ const LikedVideos = () => {
 	}, [videoDispatch]);
 	return (
 		<div>
+			<p className="typo-title flex-hz-center">Liked Videos</p>
 			{videoState.likedvideos.length < 1 && (
 				<div>
 					<p className="typo-title flex-hz-center">No liked videos yet</p>

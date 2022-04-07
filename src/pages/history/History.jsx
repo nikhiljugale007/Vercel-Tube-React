@@ -40,9 +40,12 @@ const History = () => {
 	return (
 		<div>
 			{toast.showToast && <Toast label={toast.label} />}
-			<button className="btn btn-outlined m-1" onClick={clearAllWatchHistory}>
-				clear history
-			</button>
+			<p className="typo-title flex-hz-center">Watch History</p>
+			<div className="flex-hz-center">
+				<button className="btn btn-outlined m-1" onClick={clearAllWatchHistory}>
+					clear history
+				</button>
+			</div>
 			{videoState.history.length < 1 && (
 				<div>
 					<p className="typo-title flex-hz-center">You have no watch history</p>

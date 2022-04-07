@@ -27,3 +27,19 @@
 	text-decoration: none;
 	border: 1px solid var(--primary-color);
 }
+.mobile-sidebar-container {
+	background-color: var(--hover-color);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+@media only screen and (max-width: 768px) {
+	.mobile-sidebar-container {
+		display: block;
+	}
+	.sidebar-container {
+		display: none;
+	}
+}
