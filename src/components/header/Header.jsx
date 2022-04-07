@@ -8,7 +8,7 @@ import {
 	FaMicrophone,
 } from "../../icons";
 import "./Header.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 const Header = ({ mobileSidebar, setMobileSidebar }) => {
 	const { authState } = useAuthContext();
@@ -26,12 +26,12 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 						<FaBars className="" size={20} />
 					)}
 				</button>
-				<NavLink to="/login" className="header-link">
+				<Link to="/" className="link-no-style">
 					<p className="flex-hz youtube-icon">
 						<FaYoutube size={30} />
 						VercelTube
 					</p>
-				</NavLink>
+				</Link>
 			</div>
 			<div className="nav-sub-container hide">
 				<form className="search-bar">
@@ -45,7 +45,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</button>
 			</div>
 			<div className="nav-sub-container">
-				<NavLink to="/profile" className="header-link">
+				<Link to="/profile" className="link-no-style">
 					{authState.isLoggedIn ? (
 						<button className="btn btn-icon">
 							<FaUserCircle size={20} />
@@ -53,7 +53,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 					) : (
 						<button className="btn btn-primary">LOGIN</button>
 					)}
-				</NavLink>
+				</Link>
 			</div>
 		</nav>
 	);
