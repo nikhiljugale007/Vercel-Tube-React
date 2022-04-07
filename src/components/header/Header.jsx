@@ -8,7 +8,10 @@ import {
 	FaBell,
 } from "../../icons";
 import "./Header.css";
+import { NavLink } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 const Header = () => {
+	const { authState } = useAuthContext();
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
@@ -33,9 +36,19 @@ const Header = () => {
 				<button className="btn btn-icon">
 					<FaBell size={20} />
 				</button>
-				<button className="btn btn-icon">
-					<FaUserCircle size={20} />
-				</button>
+				<NavLink
+					to="/profile"
+					className="inactive-link"
+					style={{ backgroundColor: "transparent", border: "none" }}
+				>
+					{authState.isLoggedIn ? (
+						<button className="btn btn-icon">
+							<FaUserCircle size={20} />
+						</button>
+					) : (
+						<button className="btn btn-primary">LOGIN</button>
+					)}
+				</NavLink>
 			</div>
 		</nav>
 	);
