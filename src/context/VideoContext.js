@@ -11,7 +11,7 @@ const contextInitialValue = {
 	likedvideos: [],
 	history: [],
 	categories: TabData,
-	playlist: [],
+	playlists: [],
 	filters: {
 		categoryName: "All",
 	},

@@ -159,6 +159,77 @@ const getCategories = async () => {
 		};
 	}
 };
+
+const getPlaylists = async () => {
+	try {
+		const response = await axios.get("/api/user/playlists", { headers });
+		return { playlists: response.data.playlists, success: true };
+	} catch (err) {
+		console.log(err);
+
+		return { playlists: [], success: false };
+	}
+};
+const addPlaylist = async (playlist) => {
+	try {
+		const response = await axios.post(
+			"/api/user/playlists",
+			{ playlist },
+			{ headers }
+		);
+		return { playlists: response.data.playlists, success: true };
+	} catch (err) {
+		console.log(err);
+		return { playlists: [], success: false };
+	}
+};
+const removePlaylist = async (id) => {
+	try {
+		const response = await axios.delete(`api/user/playlists/${id}`, {
+			headers,
+		});
+		return { playlists: response.data.playlists, success: true };
+	} catch (err) {
+		console.log(err);
+		return { playlists: [], success: false };
+	}
+};
+const getPlaylistById = async (id) => {
+	try {
+		const response = await axios.get(`/api/user/playlists/${id}`, { headers });
+		return { playlist: response.data.playlist, success: true };
+	} catch (err) {
+		console.log(err);
+		return { playlist: [], success: true };
+	}
+};
+const addToSpecificPlaylist = async (id, currentVideo) => {
+	try {
+		const response = await axios.post(
+			`/api/user/playlists/${id}`,
+			{ video: currentVideo },
+			{ headers }
+		);
+		return { playlist: response.data.playlist, success: true };
+	} catch (err) {
+		console.log(err);
+		return { playlist: [], success: false };
+	}
+};
+const deleteFromSpecificPlaylist = async (playlist_id, video_id) => {
+	try {
+		const response = await axios.delete(
+			`/api/user/playlists/${playlist_id}/${video_id}`,
+			{
+				headers,
+			}
+		);
+		return { playlist: response.data.playlist, success: true };
+	} catch (err) {
+		console.log(err);
+		return { playlist: [], success: false };
+	}
+};
 export {
 	getAllVideos,
 	getVideoById,
@@ -175,4 +246,10 @@ export {
 	signupuser,
 	loginuser,
 	getCategories,
+	getPlaylists,
+	addPlaylist,
+	removePlaylist,
+	getPlaylistById,
+	addToSpecificPlaylist,
+	deleteFromSpecificPlaylist,
 };
