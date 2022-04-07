@@ -16,11 +16,13 @@ import {
 	removeFromHistory,
 	deleteFromSpecificPlaylist,
 } from "../../api/apicalls";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { useVideoContext } from "../../context/VideoContext";
 import { Modal } from "../playlist-modal/Modal";
+import { useAuthContext } from "../../context/AuthContext";
 const VideoCard = ({ video, card_type }) => {
 	const { videoState, videoDispatch } = useVideoContext();
+	const { authState } = useAuthContext();
 	const [showDropDown, setShowDropDown] = useState(false);
 	const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 	const navigate = useNavigate();
@@ -29,7 +31,14 @@ const VideoCard = ({ video, card_type }) => {
 		setShowDropDown((prev) => !prev);
 	};
 
+	const checkLoggedUser = () => {
+		if (!authState.isLoggedIn) {
+			navigate("/login");
+		}
+	};
+
 	const addVideoToWatchLater = async () => {
+		checkLoggedUser();
 		const response = await addToWatchLater(video);
 		if (response.success) {
 			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
@@ -39,6 +48,7 @@ const VideoCard = ({ video, card_type }) => {
 		}
 	};
 	const removeVideoFromWatchLater = async () => {
+		checkLoggedUser();
 		const response = await removeFromWatchLater(_id);
 		if (response.success) {
 			videoDispatch({ type: "SET_WATCHLATER", payload: response.watchlater });
@@ -49,6 +59,7 @@ const VideoCard = ({ video, card_type }) => {
 	};
 
 	const addVideoToLikedVideo = async () => {
+		checkLoggedUser();
 		const response = await addToLikedVideos(video);
 		if (response.success) {
 			console.log(response);
@@ -59,6 +70,7 @@ const VideoCard = ({ video, card_type }) => {
 		}
 	};
 	const removeVideoFromLikedVideos = async () => {
+		checkLoggedUser();
 		const response = await removeFromLikedVideos(_id);
 		if (response.success) {
 			videoDispatch({ type: "SET_LIKED_VIDEOS", payload: response.likes });
@@ -79,11 +91,13 @@ const VideoCard = ({ video, card_type }) => {
 		return videoState.history.find((item) => item._id === _id);
 	};
 	const addVideoToHistory = async () => {
-		const response = await addToHistory(video);
-		if (response.success) {
-			videoDispatch({ type: "SET_HISTORY", payload: response.history });
-		} else {
-			console.log("error");
+		if (checkLoggedUser()) {
+			const response = await addToHistory(video);
+			if (response.success) {
+				videoDispatch({ type: "SET_HISTORY", payload: response.history });
+			} else {
+				console.log("error");
+			}
 		}
 	};
 	const removeVideoFromHistory = async () => {
@@ -106,6 +120,7 @@ const VideoCard = ({ video, card_type }) => {
 		navigate(`/videos/${_id}`);
 	};
 	const handlePlaylist = () => {
+		checkLoggedUser();
 		setShowPlaylistModal(true);
 		setShowDropDown(false);
 	};

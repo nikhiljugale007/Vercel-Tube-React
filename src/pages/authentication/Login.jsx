@@ -2,7 +2,7 @@ import "./authentication.css";
 import { CheckboxInput, FormInput } from "../../components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { loginuser } from "../../api/apicalls";
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -30,13 +30,15 @@ const Login = () => {
 	const [formError, setFormError] = useState(inititalLoginState);
 	const { authDispatch } = useAuthContext();
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	const loginUserFun = async () => {
 		const response = await loginuser(loginFormState);
 		if (response.success) {
 			localStorage.setItem("token", response.token);
 			authDispatch({ type: "SET_LOGGED_USER" });
-			navigate("/profile");
+			console.log(location);
+			navigate(location?.state?.from);
 		} else {
 			console.log("SOME ERROR1");
 		}
@@ -64,11 +66,6 @@ const Login = () => {
 			password: "adarshBalika123",
 		}));
 	};
-	// useEffect(() => {
-	// 	if (localStorage.getItem("token")) {
-	// 		navigate("/profile");
-	// 	}
-	// }, [navigate]);
 
 	return (
 		<>

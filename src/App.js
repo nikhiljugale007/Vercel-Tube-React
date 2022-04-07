@@ -18,21 +18,19 @@ import { useVideoContext } from "./context/VideoContext";
 import { useEffect } from "react";
 import { getPlaylists } from "./api/apicalls";
 import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
-import { useAuthContext } from "./context/AuthContext";
 function App() {
-	const { videoDispatch } = useVideoContext();
-	const { authState } = useAuthContext();
-	useEffect(() => {
-		const getAllPlaylists = async () => {
-			const response = await getPlaylists();
-			if (response.success) {
-				videoDispatch({ type: "SET_PLAYLISTS", payload: response.playlists });
-			} else {
-				console.log("ERR");
-			}
-		};
-		getAllPlaylists();
-	}, [videoDispatch]);
+	// const { videoDispatch } = useVideoContext();
+	// useEffect(() => {
+	// 	const getAllPlaylists = async () => {
+	// 		const response = await getPlaylists();
+	// 		if (response.success) {
+	// 			videoDispatch({ type: "SET_PLAYLISTS", payload: response.playlists });
+	// 		} else {
+	// 			console.log("ERR");
+	// 		}
+	// 	};
+	// 	getAllPlaylists();
+	// }, [videoDispatch]);
 
 	return (
 		<>
@@ -49,7 +47,7 @@ function App() {
 						<Route
 							path="/playlist"
 							element={
-								<RequireAuth>
+								<RequireAuth from="/playlist">
 									<PlayList />
 								</RequireAuth>
 							}
@@ -58,7 +56,7 @@ function App() {
 						<Route
 							path="/watch-later"
 							element={
-								<RequireAuth>
+								<RequireAuth from="/watch-later">
 									<WatchLater />
 								</RequireAuth>
 							}
@@ -66,7 +64,7 @@ function App() {
 						<Route
 							path="/history"
 							element={
-								<RequireAuth>
+								<RequireAuth from="/history">
 									<History />
 								</RequireAuth>
 							}
@@ -74,7 +72,7 @@ function App() {
 						<Route
 							path="/liked-videos"
 							element={
-								<RequireAuth>
+								<RequireAuth from="/liked-videos">
 									<LikedVideos />
 								</RequireAuth>
 							}
@@ -85,7 +83,7 @@ function App() {
 						<Route
 							path="/profile"
 							element={
-								<RequireAuth>
+								<RequireAuth from="/profile">
 									<Profile />
 								</RequireAuth>
 							}
