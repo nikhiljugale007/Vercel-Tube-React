@@ -8,6 +8,7 @@ import {
 	FaBell,
 } from "../../icons";
 import "./Header.css";
+import { Link, NavLink } from "react-router-dom";
 const Header = () => {
 	return (
 		<nav className="nav">
@@ -33,9 +34,11 @@ const Header = () => {
 				<button className="btn btn-icon">
 					<FaBell size={20} />
 				</button>
-				<button className="btn btn-icon">
-					<FaUserCircle size={20} />
-				</button>
+				<Link to="/login" className="link-no-style">
+					<button className="btn btn-icon">
+						<FaUserCircle size={20} />
+					</button>
+				</Link>
 			</div>
 		</nav>
 	);

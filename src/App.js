@@ -9,6 +9,9 @@ import {
 	History,
 	LikedVideos,
 	SingleVideo,
+	Login,
+	Profile,
+	Signup,
 } from "./pages";
 import Mockman from "mockman-js";
 import { useVideoContext } from "./context/VideoContext";
@@ -47,6 +50,9 @@ function App() {
 						<Route path="/history" element={<History />} />
 						<Route path="/liked-videos" element={<LikedVideos />} />
 						<Route path="/mockman" element={<Mockman />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
+						<Route path="/profile" element={<Profile />} />
 					</Routes>
 				</div>
 			</div>

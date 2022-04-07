@@ -45,6 +45,17 @@ const VideoReducerFunction = (state, action) => {
 					item._id === action.payload._id ? action.payload : item
 				),
 			};
+		case "RESET_VIDEO_STATE":
+			return {
+				videos: [],
+				watchlater: [],
+				likedvideos: [],
+				history: [],
+				playlists: [],
+				filters: {
+					categoryName: "All",
+				},
+			};
 		default:
 			return state;
 	}
