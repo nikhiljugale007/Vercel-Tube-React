@@ -44,7 +44,6 @@ const VideoCard = ({ video, card_type }) => {
 
 	const addVideoToWatchLater = async () => {
 		if (checkLoggedUser()) {
-			console.log("LOF", toast);
 			setToast((prev) => ({
 				...prev,
 				label: "Adding To WatchLater",

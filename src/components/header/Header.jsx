@@ -6,7 +6,6 @@ import {
 	FaUserCircle,
 	FaSearch,
 	FaMicrophone,
-	FaBell,
 } from "../../icons";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
