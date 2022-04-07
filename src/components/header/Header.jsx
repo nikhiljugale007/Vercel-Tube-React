@@ -1,25 +1,37 @@
 import React from "react";
 import {
 	FaBars,
+	AiOutlineCloseCircle,
 	FaYoutube,
 	FaUserCircle,
 	FaSearch,
 	FaMicrophone,
-	FaBell,
 } from "../../icons";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-const Header = () => {
+const Header = ({ mobileSidebar, setMobileSidebar }) => {
 	const { authState } = useAuthContext();
+
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
-				<FaBars className="" size={20} />
-				<p className="flex-hz youtube-icon">
-					<FaYoutube size={30} />
-					VercelTube
-				</p>
+				<button
+					className="btn btn-icon btn-sidebar-menu"
+					onClick={() => setMobileSidebar((prev) => !prev)}
+				>
+					{mobileSidebar ? (
+						<AiOutlineCloseCircle size={20} />
+					) : (
+						<FaBars className="" size={20} />
+					)}
+				</button>
+				<NavLink to="/login" className="header-link">
+					<p className="flex-hz youtube-icon">
+						<FaYoutube size={30} />
+						VercelTube
+					</p>
+				</NavLink>
 			</div>
 			<div className="nav-sub-container hide">
 				<form className="search-bar">
@@ -33,14 +45,7 @@ const Header = () => {
 				</button>
 			</div>
 			<div className="nav-sub-container">
-				<button className="btn btn-icon">
-					<FaBell size={20} />
-				</button>
-				<NavLink
-					to="/profile"
-					className="inactive-link"
-					style={{ backgroundColor: "transparent", border: "none" }}
-				>
+				<NavLink to="/profile" className="header-link">
 					{authState.isLoggedIn ? (
 						<button className="btn btn-icon">
 							<FaUserCircle size={20} />

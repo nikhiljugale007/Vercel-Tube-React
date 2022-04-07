@@ -47,7 +47,7 @@ const VideoReducerFunction = (state, action) => {
 			};
 		case "RESET_VIDEO_STATE":
 			return {
-				videos: [],
+				...state,
 				watchlater: [],
 				likedvideos: [],
 				history: [],

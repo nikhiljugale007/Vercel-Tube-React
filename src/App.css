@@ -16,9 +16,9 @@
 	overflow: scroll;
 }
 @media only screen and (max-width: 768px) {
-	.aside {
+	/* .aside {
 		display: none;
-	}
+	} */
 	.content-section {
 		grid-template-columns: 1fr;
 	}

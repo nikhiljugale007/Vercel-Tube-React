@@ -15,13 +15,21 @@ import {
 } from "./pages";
 import Mockman from "mockman-js";
 import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
+import { useState } from "react";
 function App() {
+	const [mobileSidebar, setMobileSidebar] = useState(false);
 	return (
 		<>
-			<Header />
+			<Header
+				mobileSidebar={mobileSidebar}
+				setMobileSidebar={setMobileSidebar}
+			/>
 			<div className="content-section">
 				<aside className="aside">
-					<Sidebar />
+					<Sidebar
+						mobileSidebar={mobileSidebar}
+						setMobileSidebar={setMobileSidebar}
+					/>
 				</aside>
 				<div className="main-section">
 					<Routes>

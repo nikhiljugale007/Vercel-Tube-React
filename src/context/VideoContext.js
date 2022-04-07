@@ -24,7 +24,6 @@ const VideoContextProvider = ({ children }) => {
 	);
 
 	const filteredData = getFilteredVideos(videoState.videos, videoState.filters);
-	console.log(videoState);
 
 	return (
 		<VideoContext.Provider value={{ videoState, filteredData, videoDispatch }}>

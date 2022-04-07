@@ -8,7 +8,6 @@ export const PlaylistCard = ({ playlist }) => {
 	const { videoDispatch } = useVideoContext();
 	const navigate = useNavigate();
 	const deletePlaylist = async () => {
-		console.log(_id);
 		const response = await removePlaylist(_id);
 		console.log(response);
 

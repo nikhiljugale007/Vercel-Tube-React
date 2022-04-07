@@ -65,3 +65,9 @@
 	background-color: var(--hover-color);
 	transform: scale(1.2);
 }
+.img-responsive {
+	max-height: 50rem;
+	max-width: 50rem;
+	aspect-ratio: 1;
+	justify-self: center;
+}
