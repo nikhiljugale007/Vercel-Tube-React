@@ -26,7 +26,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 						<FaBars className="" size={20} />
 					)}
 				</button>
-				<NavLink to="/login" className="header-link">
+				<NavLink to="/" className="header-link">
 					<p className="flex-hz youtube-icon">
 						<FaYoutube size={30} />
 						VercelTube
