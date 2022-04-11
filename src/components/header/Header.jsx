@@ -21,6 +21,10 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 		e.preventDefault();
 		videoDispatch({ type: "SET_SEARCH_INPUT_FILTER", payload: searchInput });
 	};
+	const getActiveStyle = ({ isActive }) => ({
+		backgroundColor: "transparent",
+		border: "none",
+	});
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
@@ -34,7 +38,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 						<FaBars className="" size={20} />
 					)}
 				</button>
-				<NavLink to="/login" className="header-link">
+				<NavLink to="/" className="header-link" style={getActiveStyle}>
 					<p className="flex-hz youtube-icon">
 						<FaYoutube size={30} />
 						VercelTube
