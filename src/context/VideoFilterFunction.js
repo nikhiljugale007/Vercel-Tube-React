@@ -9,7 +9,11 @@ const searchFilteredData = (videos, filters) => {
 	const searchData = typeFilterData.filter((video) => {
 		return video.title
 			.toLowerCase()
-			.includes(filters.searchBarInput.toLowerCase());
+			.includes(
+				filters.searchBarInput === undefined
+					? ""
+					: filters.searchBarInput.toLowerCase()
+			);
 	});
 	return searchData;
 };
