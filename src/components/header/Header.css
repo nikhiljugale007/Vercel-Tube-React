@@ -24,10 +24,10 @@
 	border: none;
 	background-color: var(--hover-color);
 	padding-left: 1rem;
-	border-radius: 5px;
+	border-radius: 10px;
 }
-.search-bar input:focus {
-	border: none;
+.search-bar input:focus-visible {
+	outline: none;
 }
 .search-bar .btn-icon {
 	padding: 0 1rem;
