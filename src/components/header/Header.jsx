@@ -62,7 +62,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</button>
 			</div>
 			<div className="nav-sub-container">
-				<NavLink to="/profile" className="header-link">
+				<NavLink to="/profile" className="header-link" style={getActiveStyle}>
 					{authState.isLoggedIn ? (
 						<button className="btn btn-icon">
 							<FaUserCircle size={20} />
