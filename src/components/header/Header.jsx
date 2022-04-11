@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
 	FaBars,
 	AiOutlineCloseCircle,
@@ -10,9 +10,17 @@ import {
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
+import { useVideoContext } from "../../context/VideoContext";
 const Header = ({ mobileSidebar, setMobileSidebar }) => {
 	const { authState } = useAuthContext();
+	const { videoDispatch } = useVideoContext();
 
+	const [searchInput, setSearchInput] = useState("");
+
+	const submitForm = (e) => {
+		e.preventDefault();
+		videoDispatch({ type: "SET_SEARCH_INPUT_FILTER", payload: searchInput });
+	};
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
@@ -34,8 +42,13 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</NavLink>
 			</div>
 			<div className="nav-sub-container hide">
-				<form className="search-bar">
-					<input type="text" placeholder="Search" />
+				<form className="search-bar" onSubmit={submitForm}>
+					<input
+						type="text"
+						placeholder="Search"
+						value={searchInput}
+						onChange={(e) => setSearchInput(e.target.value)}
+					/>
 					<button className="btn-icon" type="submit">
 						<FaSearch />
 					</button>
