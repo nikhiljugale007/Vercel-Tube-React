@@ -3,6 +3,7 @@ import "./VideoListing.css";
 import { useVideoContext } from "../../context/VideoContext";
 import { getAllVideos } from "../../api/apicalls";
 import { useEffect, useState } from "react";
+import { empty_list } from "./../../assets/index";
 const VideoListing = () => {
 	const { videoState, filteredData, videoDispatch } = useVideoContext();
 	const [loading, setLoading] = useState(true);
@@ -30,6 +31,18 @@ const VideoListing = () => {
 							<Tab key={index} label={item} />
 						))}
 					</div>
+					{filteredData.length < 1 && (
+						<div className="flex-vt-center">
+							<p className="typo-title flex-hz-center">
+								No videos matching your requirements
+							</p>
+							<img
+								className="img-responsive"
+								src={empty_list}
+								alt="empty-list"
+							/>
+						</div>
+					)}
 					<div className="grid  grid-4-responsive">
 						{filteredData.map((video) => {
 							return <VideoCard key={video._id} video={video} />;
