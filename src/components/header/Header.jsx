@@ -9,8 +9,7 @@ import {
 } from "../../icons";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import { useAuthContext } from "../../context/AuthContext";
-import { useVideoContext } from "../../context/VideoContext";
+import { useAuthContext, useVideoContext } from "../../context";
 const Header = ({ mobileSidebar, setMobileSidebar }) => {
 	const { authState } = useAuthContext();
 	const { videoDispatch } = useVideoContext();
