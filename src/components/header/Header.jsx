@@ -1,7 +1,6 @@
-import { useState } from "react";
+import React from "react";
 import {
 	FaBars,
-	AiOutlineCloseCircle,
 	FaYoutube,
 	FaUserCircle,
 	FaSearch,
@@ -9,35 +8,21 @@ import {
 } from "../../icons";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import { useAuthContext, useVideoContext } from "../../context";
-const Header = ({ mobileSidebar, setMobileSidebar }) => {
+import { useAuthContext } from "../../context/AuthContext";
+const Header = () => {
 	const { authState } = useAuthContext();
-	const { videoDispatch } = useVideoContext();
-
-	const [searchInput, setSearchInput] = useState("");
-
-	const submitForm = (e) => {
-		e.preventDefault();
-		videoDispatch({ type: "SET_SEARCH_INPUT_FILTER", payload: searchInput });
-	};
 	const getActiveStyle = ({ isActive }) => ({
+		color: isActive ? "blue" : "",
 		backgroundColor: "transparent",
 		border: "none",
 	});
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
-				<button
-					className="btn btn-icon btn-sidebar-menu"
-					onClick={() => setMobileSidebar((prev) => !prev)}
-				>
-					{mobileSidebar ? (
-						<AiOutlineCloseCircle size={20} />
-					) : (
-						<FaBars className="" size={20} />
-					)}
+				<button className="btn btn-icon btn-sidebar-menu hide">
+					<FaBars className="" size={20} />
 				</button>
-				<NavLink to="/" className="header-link" style={getActiveStyle}>
+				<NavLink to="/login" className="header-link" style={getActiveStyle}>
 					<p className="flex-hz youtube-icon">
 						<FaYoutube size={30} />
 						VercelTube
@@ -45,13 +30,8 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</NavLink>
 			</div>
 			<div className="nav-sub-container hide">
-				<form className="search-bar" onSubmit={submitForm}>
-					<input
-						type="text"
-						placeholder="Search"
-						value={searchInput}
-						onChange={(e) => setSearchInput(e.target.value)}
-					/>
+				<form className="search-bar">
+					<input type="text" placeholder="Search" />
 					<button className="btn-icon" type="submit">
 						<FaSearch />
 					</button>

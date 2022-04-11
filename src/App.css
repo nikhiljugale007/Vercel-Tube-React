@@ -15,10 +15,20 @@
 	padding: 1rem;
 	overflow: scroll;
 }
+.mobile-nav {
+	background-color: var(--hover-color);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: none;
+}
 @media only screen and (max-width: 768px) {
-	/* .aside {
+	.aside {
 		display: none;
-	} */
+	}
+	.mobile-nav {
+		display: block;
+	}
 	.content-section {
 		grid-template-columns: 1fr;
 	}
