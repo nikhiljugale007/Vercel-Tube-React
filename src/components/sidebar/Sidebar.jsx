@@ -7,12 +7,13 @@ import {
 	FaThList,
 	FaThumbsUp,
 } from "../../icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 	const getActiveStyle = ({ isActive }) => ({
 		color: isActive ? "white" : "",
 	});
+	const location = useLocation();
 	return (
 		<>
 			{/* desktop sidebar */}
@@ -35,6 +36,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 					to="/playlist"
 					className="sidebar-item link-no-style "
 					style={getActiveStyle}
+					state={{ from: location }}
 				>
 					<FaThList size={20} /> <p>Playlist</p>
 				</NavLink>
@@ -42,6 +44,7 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 					to="/liked-videos"
 					className="sidebar-item link-no-style "
 					style={getActiveStyle}
+					state={{ from: location }}
 				>
 					<FaThumbsUp size={20} /> <p>Liked Videos</p>
 				</NavLink>
@@ -49,13 +52,15 @@ const Sidebar = ({ mobileSidebar, setMobileSidebar }) => {
 					to="/watch-later"
 					className="sidebar-item link-no-style "
 					style={getActiveStyle}
+					state={{ from: location }}
 				>
 					<FaClock size={20} /> <p>Watch Later</p>
 				</NavLink>
 				<NavLink
 					to="/history"
-					className="sidebar-item link-no-style "
+					className="sidebar-item link-no-style"
 					style={getActiveStyle}
+					state={{ from: location }}
 				>
 					<FaHistory size={20} /> <p>History</p>
 				</NavLink>

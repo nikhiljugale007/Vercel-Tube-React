@@ -45,6 +45,15 @@ const VideoReducerFunction = (state, action) => {
 					item._id === action.payload._id ? action.payload : item
 				),
 			};
+		case "SET_SEARCH_INPUT_FILTER": {
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					searchBarInput: action.payload,
+				},
+			};
+		}
 		case "RESET_VIDEO_STATE":
 			return {
 				...state,

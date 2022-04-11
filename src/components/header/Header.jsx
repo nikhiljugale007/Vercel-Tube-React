@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
 	FaBars,
 	AiOutlineCloseCircle,
@@ -9,10 +9,21 @@ import {
 } from "../../icons";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuthContext, useVideoContext } from "../../context";
 const Header = ({ mobileSidebar, setMobileSidebar }) => {
 	const { authState } = useAuthContext();
+	const { videoDispatch } = useVideoContext();
 
+	const [searchInput, setSearchInput] = useState("");
+
+	const submitForm = (e) => {
+		e.preventDefault();
+		videoDispatch({ type: "SET_SEARCH_INPUT_FILTER", payload: searchInput });
+	};
+	const getActiveStyle = ({ isActive }) => ({
+		backgroundColor: "transparent",
+		border: "none",
+	});
 	return (
 		<nav className="nav">
 			<div className="nav-sub-container">
@@ -26,7 +37,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 						<FaBars className="" size={20} />
 					)}
 				</button>
-				<NavLink to="/login" className="header-link">
+				<NavLink to="/" className="header-link" style={getActiveStyle}>
 					<p className="flex-hz youtube-icon">
 						<FaYoutube size={30} />
 						VercelTube
@@ -34,8 +45,13 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</NavLink>
 			</div>
 			<div className="nav-sub-container hide">
-				<form className="search-bar">
-					<input type="text" placeholder="Search" />
+				<form className="search-bar" onSubmit={submitForm}>
+					<input
+						type="text"
+						placeholder="Search"
+						value={searchInput}
+						onChange={(e) => setSearchInput(e.target.value)}
+					/>
 					<button className="btn-icon" type="submit">
 						<FaSearch />
 					</button>
@@ -45,7 +61,7 @@ const Header = ({ mobileSidebar, setMobileSidebar }) => {
 				</button>
 			</div>
 			<div className="nav-sub-container">
-				<NavLink to="/profile" className="header-link">
+				<NavLink to="/profile" className="header-link" style={getActiveStyle}>
 					{authState.isLoggedIn ? (
 						<button className="btn btn-icon">
 							<FaUserCircle size={20} />

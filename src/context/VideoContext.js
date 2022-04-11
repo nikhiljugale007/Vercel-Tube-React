@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { TabData } from "../pages/video-listing/TabData";
-import { getFilteredVideos } from "./VideoFilterFunction";
+import { searchFilteredData } from "./VideoFilterFunction";
 import { VideoReducerFunction } from "./VideoReducerFunction";
 
 const VideoContext = createContext();
@@ -14,6 +14,7 @@ const contextInitialValue = {
 	playlists: [],
 	filters: {
 		categoryName: "All",
+		searchBarInput: "",
 	},
 };
 
@@ -23,7 +24,10 @@ const VideoContextProvider = ({ children }) => {
 		contextInitialValue
 	);
 
-	const filteredData = getFilteredVideos(videoState.videos, videoState.filters);
+	const filteredData = searchFilteredData(
+		videoState.videos,
+		videoState.filters
+	);
 
 	return (
 		<VideoContext.Provider value={{ videoState, filteredData, videoDispatch }}>
