@@ -1,7 +1,11 @@
+.home-page-container {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
 .content-section {
 	display: grid;
-	grid-template-columns: 200px 1fr;
-	height: calc(100vh - 6rem);
+	grid-template-columns: 20rem 1fr;
+	height: calc(100vh - 11rem);
 	position: relative;
 	top: 6rem;
 }
@@ -15,10 +19,19 @@
 	padding: 1rem;
 	overflow: scroll;
 }
-@media only screen and (max-width: 768px) {
-	/* .aside {
+.mobile-nav {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: none;
+}
+@media only screen and (max-width: 768em) {
+	.aside {
 		display: none;
-	} */
+	}
+	.mobile-nav {
+		display: block;
+	}
 	.content-section {
 		grid-template-columns: 1fr;
 	}

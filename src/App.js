@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Header, RequireAuth, Sidebar } from "./components";
+import { Header, MobileNavigation, RequireAuth, Sidebar } from "./components";
 import {
 	Home,
 	VideoListing,
@@ -15,21 +15,13 @@ import {
 } from "./pages";
 import Mockman from "mockman-js";
 import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
-import { useState } from "react";
 function App() {
-	const [mobileSidebar, setMobileSidebar] = useState(false);
 	return (
-		<>
-			<Header
-				mobileSidebar={mobileSidebar}
-				setMobileSidebar={setMobileSidebar}
-			/>
+		<div className="home-page-container">
+			<Header />
 			<div className="content-section">
 				<aside className="aside">
-					<Sidebar
-						mobileSidebar={mobileSidebar}
-						setMobileSidebar={setMobileSidebar}
-					/>
+					<Sidebar />
 				</aside>
 				<div className="main-section">
 					<Routes>
@@ -83,7 +75,10 @@ function App() {
 					</Routes>
 				</div>
 			</div>
-		</>
+			<div className="mobile-nav">
+				<MobileNavigation />
+			</div>
+		</div>
 	);
 }
 

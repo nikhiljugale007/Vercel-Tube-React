@@ -71,3 +71,6 @@
 	aspect-ratio: 1;
 	justify-self: center;
 }
+.text-small {
+	font-size: 0.5rem;
+}
