@@ -1,7 +1,11 @@
+.home-page-container {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
 .content-section {
 	display: grid;
 	grid-template-columns: 200px 1fr;
-	height: calc(100vh - 6rem);
+	height: calc(100vh - 11rem);
 	position: relative;
 	top: 6rem;
 }

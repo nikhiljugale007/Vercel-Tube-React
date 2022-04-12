@@ -17,7 +17,7 @@ import Mockman from "mockman-js";
 import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
 function App() {
 	return (
-		<>
+		<div className="home-page-container">
 			<Header />
 			<div className="content-section">
 				<aside className="aside">
@@ -78,7 +78,7 @@ function App() {
 			<div className="mobile-nav">
 				<MobileNavigation />
 			</div>
-		</>
+		</div>
 	);
 }
 
