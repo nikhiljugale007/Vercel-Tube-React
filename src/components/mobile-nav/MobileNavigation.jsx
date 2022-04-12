@@ -15,7 +15,7 @@ export const MobileNavigation = () => {
 		border: "none",
 	});
 	return (
-		<div className="flex-hz-space-bw full-width">
+		<div className="flex-hz-space-bw full-width mobile-nav-container ">
 			<NavLink
 				className="flex-vt-center p-1 link-no-style"
 				to="/"
