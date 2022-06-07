@@ -31,12 +31,14 @@ const PlayList = () => {
       {showPlaylistModal && (
         <NewPlaylistModal setShowPlaylistModal={setShowPlaylistModal} />
       )}
-      <button
-        className="btn btn-outlined mb-2"
-        onClick={() => setShowPlaylistModal(true)}
-      >
-        Create Playlist
-      </button>
+      <div className="flex-hz-center">
+        <button
+          className="btn btn-outlined m-2"
+          onClick={() => setShowPlaylistModal(true)}
+        >
+          Create Playlist
+        </button>
+      </div>
       {videoState.playlists.length < 1 && (
         <div className="flex-vt-center">
           <p className="typo-title flex-hz-center">
