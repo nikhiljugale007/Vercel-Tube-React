@@ -12,6 +12,7 @@ import {
   Login,
   Profile,
   Signup,
+  ErrorPage,
 } from "./pages";
 import Mockman from "mockman-js";
 import { SinglePlaylist } from "./pages/single-playlist/SinglePlaylist";
@@ -80,6 +81,7 @@ function App() {
                 </RequireAuth>
               }
             />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       </div>
