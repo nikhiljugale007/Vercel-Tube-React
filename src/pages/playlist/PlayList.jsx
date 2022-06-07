@@ -4,11 +4,13 @@ import { useVideoContext } from "../../context/VideoContext";
 import { useEffect } from "react";
 import { PlaylistCard } from "../../components/playlist-card/PlaylistCard";
 import { empty_list } from "./../../assets/index";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { NewPlaylistModal } from "../../components";
 
 const PlayList = () => {
   const { videoState, videoDispatch } = useVideoContext();
-
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   useEffect(() => {
     const getAllPlayList = async () => {
       const response = await getPlaylists();
@@ -26,6 +28,15 @@ const PlayList = () => {
         <title>Playlist | VercelTube</title>
       </Helmet>
       <p className="typo-title flex-hz-center">Playlist</p>
+      {showPlaylistModal && (
+        <NewPlaylistModal setShowPlaylistModal={setShowPlaylistModal} />
+      )}
+      <button
+        className="btn btn-outlined mb-2"
+        onClick={() => setShowPlaylistModal(true)}
+      >
+        Create Playlist
+      </button>
       {videoState.playlists.length < 1 && (
         <div className="flex-vt-center">
           <p className="typo-title flex-hz-center">
