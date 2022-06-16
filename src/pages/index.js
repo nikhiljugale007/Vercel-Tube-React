@@ -8,3 +8,4 @@ export { SingleVideo } from "./single-video/SingleVideo";
 export { Login } from "./authentication/Login";
 export { Signup } from "./authentication/Signup";
 export { Profile } from "./authentication/Profile";
+export { ErrorPage } from "./error-page/ErrorPage";

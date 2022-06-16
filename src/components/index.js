@@ -10,3 +10,4 @@ export { CheckboxInput } from "./form_input/CheckboxInput";
 export { FormInput } from "./form_input/FormInput";
 export { RequireAuth } from "./auth_wrapper/RequireAuth";
 export { Toast } from "./toast/Toast";
+export { NewPlaylistModal } from "./playlist-modal/NewPlaylistModal";
